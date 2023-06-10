@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Tower from "./upu/Tower";
+import Gauge from "./upu/Gauge";
+import GaugeCalculator from "./upu/GaugeCalculator";
+import RightNavBar from "./upu/RightNavBar";
+import LeftBarExpand from "./upu/LeftBarExpand";
+import RightMenuBar from "./upu/RightMenuBar";
+import FactoryLayout from "./upu/FactoryLayout";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className=" overflow-hidden">
+      <Tower />
     </div>
   );
 }
 
 export default App;
+// <Gauge />
+// <LeftBarExpand />
+// <RightNavBar />
+// <RightMenuBar />
+// <FactoryLayout />
+// <GaugeCalculator />
+// className="flex w-full h-[635px]"

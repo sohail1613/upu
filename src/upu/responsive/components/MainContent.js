@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ReactComponent as DotIcon } from "../../../logos/threeDotsIcon.svg";
-import { ReactComponent as Lathe } from "../../../logos/lathe.svg";
+import { ReactComponent as Lathe } from "../../../logos/info.svg";
 import { ReactComponent as Plus } from "../../../logos/addIcon.svg";
 import { ReactComponent as Backward } from "../../../logos/backwardIcon.svg";
 import ProcessIcon from "../../../logos/lathe 1.png";
@@ -65,7 +65,7 @@ const MainContent = () => {
         </div>
 
         {/*Processes content*/}
-        <div className="processesFrame flex flex-col items-start p-0 gap-4 w-[100%] h-[100%] bg-green-300">
+        <div className="processesFrame flex flex-col items-start p-0 gap-4 w-[100%] h-[100%]">
           {/*Processes frame*/}
           <div className="processFrame flex flex-col justify-between items-start p-0 gap-4 w-full h-5">
             <div className="process flex flex-row items-start p-0 gap-2 w-full h-5">
@@ -75,7 +75,7 @@ const MainContent = () => {
             </div>
           </div>
           {/*Tab and buttons to expand for more details*/}
-          <div className="tabFrame flex flex-row items-center p-0 gap-6 w-full h-10 bg-yellow-500">
+          <div className="tabFrame flex flex-row items-center p-0 gap-6 w-full h-10">
             <button className="buttonFrame  relative flex flex-row items-start p-0 w-10 h-10 rounded-md">
               <div className="button box-border flex flex-row p-2.5 gap-2 w-10 h-10 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-lg rounded-md">
                 <div className="plus w-4 h-4 ">
@@ -85,10 +85,35 @@ const MainContent = () => {
             </button>
 
             {/*machine button frame*/}
-            <div className="machinebuttonFrame relative flex flex-row items-start p-0 gap-4 w-[100%] h-10 bg-slate-500">
-                <button className="leftArrowButton relative w-3 h-10 bg-slate-100">
-                <Backward  className="h-10  border-[2px] border-solid"/>
+            <div className="machinebuttonFrame relative flex flex-row items-start p-0 gap-4 w-[100%] h-10">
+              <button className="leftArrowButton relative w-3 h-10">
+                <Backward className="h-6" />
+              </button>
+
+              {/*lathe Button*/}
+              <div className="latheButtonFrame flex flex-row items-start p-0 w-full h-10 rounded-md">
+                <button className="buttonBase gap-2 box-border flex flex-row justify-center items-center px-2 py-[14px] w-full h-10 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-md rounded-md">
+                  <img src={ProcessIcon} className="w-6 h-6" />
+                  <span className="w-20 h-5 font-sans not-italic font-medium text-xs leading-5 text-[#344054]">
+                    Manual Torna
+                  </span>
                 </button>
+              </div>
+            </div>
+          </div>
+          {/*table content*/}
+          <div className="tableContent box-border flex flex-col justify-between items-start p-0 w-full h-full overflow-y-scroll no-scrollbar bg-[#FFFFFF] border border-solid border-[#EAECF0] shadow-lg rounded-lg">
+            <div className="cardHeader flex flex-col items-start p-0 w-full h-[64px]">
+              <div className="content box-border flex flex-row justify-between items-center p-4 gap-4 border-b border-solid border-b-[#EAECF0] h-[64px] w-full ">
+                {/*Badges*/}
+                <div className="badges flex flex-row items-start p-0 w-[81px] h-[22px] mix-blend-multiply">
+                  <div className="badgesBase flex flex-row justify-center items-center py-[2px] px-2 w-[81px] h-[22px] bg-[#F9F5FF] rounded-2xl">
+                    <p className="w-[55px] h-[18px] font-sans not-italic font-medium text-[10px] leading-[18px] text-center text-[#6941C6]">
+                      10 ekipman
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

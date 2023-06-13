@@ -91,7 +91,7 @@ const GaugeCalculator = ({value }) => {
   return (
     <div id="main" 
     style={{width : '300px'}}
-    className="flex flex-col items-center gap-1 !w-[700px] h-[120px] absolute -mt-10">
+    className="flex flex-col items-center gap-1 !w-[700px] xs:-translate-y-3 xs:max-w-[112px] h-[120px] absolute -mt-10">
       <ReactECharts option={option} style={{ width: "100%", height: "100%" }}/>
     </div>
   );

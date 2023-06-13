@@ -6,6 +6,7 @@ import RightNavBar from "./upu/RightNavBar";
 import LeftBarExpand from "./upu/LeftBarExpand";
 import RightMenuBar from "./upu/RightMenuBar";
 import FactoryLayout from "./upu/FactoryLayout";
+import Mobile from "./upu/responsive/components/Mobile";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
 }
 
 export default App;
+// <Tower />
 // <Gauge />
 // <LeftBarExpand />
 // <RightNavBar />

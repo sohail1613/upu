@@ -15,15 +15,15 @@ const Tower = () => {
   
 
   return (
-    <div className="bg-[#6941C6] flex w-full h-full overflow-hidden">
+    <div className="bg-[#6941C6] flex w-full h-[636px] overflow-hidden lg:w-[90%] md:w-fit">
       {/*left bar for navigations*/}
       <LeftBarExpand />
 
       {/*it holds all details*/}
-      <div className="h-[full] w-[1360px] !bg-white flex flex-row gap-5 p-0 rounded-tl-lg mt-3">
+      <div className="h-full lg:max-w-full sm:h-screen bg-white flex flex-row rounded-tl-lg mt-3">
         {/*main containt*/}
-        <div className="details w-full ">
-          <div className="header flex flex-row justify-between items-center mt-5 ml-5  gap-2.5  bg-[#FFFFFF] h-14">
+        <div className="details w-full  lg:w-[80%] md:w-[92%]">
+          <div className="header flex flex-row justify-between items-center mt-5 ml-5 gap-2.5 bg-[#FFFFFF] h-14">
             <div className="flex flex-row items-center gap-2.5">
               <UpuTwin />
               <p className="font-inter not-italic font-normal text-base leading-4 text-[#667085] align-bottom">
@@ -32,7 +32,7 @@ const Tower = () => {
             </div>
 
             {/*Toggle and charts*/}
-            <button className="enabled  flex flex-row gap-[30px] h-10 items-center rounded-sm">
+            <button className="enabled flex flex-row gap-[30px] h-10 items-center rounded-sm">
               {/*Toggle button*/}
               <button
                 className={`flex relative flex-row justify-end items-center py-[2px] pl-[2px] pr-[2px] gap-1 w-[54px] h-6 bg-[#7F56D9] rounded-xl ${

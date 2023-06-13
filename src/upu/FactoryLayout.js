@@ -5,14 +5,13 @@ import { ReactComponent as InfoButton } from "../logos/info.svg";
 import { ReactComponent as IndustrialButton } from "../logos/factory.svg";
 import { ReactComponent as EditButton } from "../logos/edit.svg";
 import MachineMap from "../logos/industrialMap.svg";
-//  import { ReactComponent as MachineMapss } from "../logos/industrialMapWithMachines.svg";
 import MachineMapss from "../logos/industrialMapWithMachines.svg";
 
 const FactoryLayout = () => {
   return (
     <>
       {/*Factory Layout or industrila mapping section*/}
-      <button className="industryMapping w-[1115px] h-[400px] bg-[#FFFFFF] rounded-lg overflow-scroll no-scrollbar">
+      <button className="industryMapping w-[1115px] h-[400px] lg:w-[100%] bg-[#FFFFFF] rounded-lg overflow-scroll no-scrollbar">
         <img src={MachineMapss} />
       </button>
     </>

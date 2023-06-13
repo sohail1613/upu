@@ -22,7 +22,7 @@ const RightNavBar = () => {
       {/*right bar*/}
       <button
         style={{ width: showMenuBar ? 300 : 80 }}
-        className="rightbar flex flex-col items-center justify-between bg-[#FFFFFF] max-h-full gap-5 pr-5 border border-solid border-[#E5E5E5] rounded-md shadow-lg"
+        className="rightbar  flex flex-col items-center justify-between max-h-[624px] gap-5 pr-5 ml-auto border border-solid border-[#E5E5E5] rounded-md shadow-lg"
         onClick={handleClick}
       >
         {/*Logo here */}

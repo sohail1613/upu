@@ -157,7 +157,7 @@ const LeftBarExpand = () => {
         </>
       ) : (
         <>
-          <div className="sideBar flex flex-row justify-center items-start p-0 w-20 h-full bg-[#6941C6]">
+          <div className="sideBar flex flex-row justify-center items-start p-0 w-20 h-[636px] bg-[#6941C6]">
             <div className="content flex flex-col justify-between items-center p-0 w-20 h-full ">
               <div className="nav flex flex-col items-start pt-8 py-0 pb-0 gap-6 w-20 h-[472px]">
                 <div className="header flex flex-col justify-center items-center py-0 px-[25px] w-20 h-8">

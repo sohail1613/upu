@@ -9,7 +9,7 @@ import FactoryLayout from "./upu/FactoryLayout";
 
 function App() {
   return (
-    <div className=" overflow-hidden">
+    <div>
       <Tower />
     </div>
   );

@@ -8,9 +8,14 @@ import { ReactComponent as DropDown } from "../../../logos/Icon.svg";
 import ProcessIcon from "../../../logos/lathe 1.png";
 import GaugeCalculator from "../../GaugeCalculator";
 import data from "../../jsonData/GaugeData.js";
+import machine from "../../jsonData/Machine.js";
+import EditMachineCard from "./EditMachineCard";
 
 const MainContent = () => {
   const [value, setValue] = useState(data);
+  const [machineCard, setMachineCard] = useState(machine);
+  const [showEditForm, setShowEditForm] = useState("");
+
   return (
     <>
       <div className="main flex flex-col items-center py-5 px-5 gap-6 w-full h-[882px] overflow-y-scroll no-scrollbar">
@@ -128,34 +133,62 @@ const MainContent = () => {
             {/*Machine Cards frame */}
             <div className="mahinesCards flex-1 w-full overflow-y-scroll no-scrollbar">
               {/*Machine Card*/}
-              <div className="MachineCardFrame flex flex-row items-start p-0 w-full h-[76px]">
-                <div className="cardColoumn box-border flex flex-row items-center p-4 gap-3 w-full h-[76px] bg-[#FFFFFF] border border-solid border-[#EAECF0]">
-                  <div className="content flex flex-row items-center p-0 gap-3 w-[90%] h-11">
-                    {/*Avatar*/}
-                    <div className="profile relative box-border w-11 h-11 border border-solid border-[#EFEFEF] rounded-full bg-red-300">
-                      {/*Avatar status (offline, online, etc)*/}
-                      <div className="avatarStatus absolute w-3 h-3 right-0 bottom-8 bg-[#12B76A] border border-solid border-[#FFFFFF] rounded-md"></div>
+              {machineCard.map((machine) => {
+                return (
+                  <>
+                    <div
+                      className="MachineCardFrame flex flex-row items-start p-0 w-full h-[76px]"
+                      key={machine.id}
+                    >
+                      <div className="cardColoumn  box-border flex flex-row items-center p-4 gap-3 w-full h-[76px] bg-[#FFFFFF] border border-solid border-[#EAECF0]">
+                        <div className="content flex flex-row items-center p-0 gap-3 w-[90%] h-11">
+                          {/*Avatar*/}
+                          <div className="profile relative box-border w-11 h-11 border border-solid border-[#EFEFEF] rounded-full bg-red-300">
+                            {/*Avatar status (offline, online, etc)*/}
+                            <div className="avatarStatus absolute w-3 h-3 right-0 bottom-8 bg-[#12B76A] border border-solid border-[#FFFFFF] rounded-md"></div>
+                          </div>
+                          {/*Machine name and model*/}
+                          <div className="machineContent flex flex-col items-start p-0 gap-3 w-[85%] h-10">
+                            {/*Machine name*/}
+                            <p className="w-full h-3.5 font-sans not-italic font-medium text-base leading-[14px] flex items-center uppercase text-[#667085]">
+                              {machine.name}
+                            </p>
+                            {/*Machine model*/}
+                            <p className="w-full h-3.5 font-sans not-italic font-medium text-xs leading-[14px] flex items-center uppercase text-[#101828]">
+                              {machine.title}
+                            </p>
+                          </div>
+                        </div>
+                        {/*Machine info*/}
+                        <div className="machineInfo flex flex-row items-start p-0 gap-3 w-8 h-8">
+                          <button
+                            className="infoIcon  flex items-center justify-center w-8 h-8 bg-[#F2F4F7] border-4 border-solid border-[#F9FAFB] rounded-full"
+                            onClick={() => {
+                              {/*data will be visible for one machine at a time*/}
+                              if (machine.id !== showEditForm) {
+                                setShowEditForm(machine.id);
+                              } else {
+                                setShowEditForm("");
+                              }
+                            }}
+                          >
+                            <DropDown className="!text-[#667085] rotate-90" />
+                          </button>
+                        </div>
+                      </div>
                     </div>
-                    {/*Machine name and model*/}
-                    <div className="machineContent flex flex-col items-start p-0 gap-3 w-[85%] h-10">
-                      {/*Machine name*/}
-                      <p className="w-full h-3.5 font-sans not-italic font-medium text-base leading-[14px] flex items-center uppercase text-[#667085]">
-                        GoodWay
-                      </p>
-                      {/*Machine model*/}
-                      <p className="w-full h-3.5 font-sans not-italic font-medium text-xs leading-[14px] flex items-center uppercase text-[#101828]">
-                        gls-200
-                      </p>
-                    </div>
-                  </div>
-                  {/*Machine info*/}
-                  <div className="machineInfo flex flex-row items-start p-0 gap-3 w-8 h-8">
-                    <button className="infoIcon  flex items-center justify-center w-8 h-8 bg-[#F2F4F7] border-4 border-solid border-[#F9FAFB] rounded-full">
-                      <DropDown className="!text-[#667085] rotate-90" />
-                    </button>
-                  </div>
-                </div>
-              </div>
+                    {/*using props to set value for each machine*/}
+                    {showEditForm === machine.id && (
+                      <EditMachineCard
+                        puantaj={machine.puantaj}
+                        nodeId={machine.nodeId}
+                        maxPersonel={machine.maxPersonal}
+                        serilaNo={machine.serialNo}
+                      />
+                    )}
+                  </>
+                );
+              })}
             </div>
           </div>
         </div>

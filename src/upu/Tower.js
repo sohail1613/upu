@@ -10,6 +10,7 @@ import RightNavBar from "./RightNavBar";
 import Toggle from "./Toggle";
 import StatusBar from "./responsive/components/StatusBar";
 import MainContent from "./responsive/components/MainContent";
+import EditMachineCard from "./responsive/components/EditMachineCard";
 
 const Tower = () => {
   const [isToggled, setIsToggled] = useState(true);

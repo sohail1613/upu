@@ -3,6 +3,8 @@ import { ReactComponent as DotIcon } from "../../../logos/threeDotsIcon.svg";
 import { ReactComponent as Lathe } from "../../../logos/info.svg";
 import { ReactComponent as Plus } from "../../../logos/addIcon.svg";
 import { ReactComponent as Backward } from "../../../logos/backwardIcon.svg";
+import { ReactComponent as Add } from "../../../logos/addIcon.svg";
+import { ReactComponent as DropDown } from "../../../logos/Icon.svg";
 import ProcessIcon from "../../../logos/lathe 1.png";
 import GaugeCalculator from "../../GaugeCalculator";
 import data from "../../jsonData/GaugeData.js";
@@ -32,7 +34,7 @@ const MainContent = () => {
                     <div className="iconAndText box-border justify-between flex flex-row items-center py-1.5 px-2.5 w-[120px] h-7 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-lg rounded-md">
                       <img src={ProcessIcon} />
                       <div className="text flex flex-row items-start p-0 w-16 h-2.5">
-                        <span className="w-16 h-2.5 font-sans font-normal not-italic  text-[10px] flex items-center text-center text-[#1D2939] ">
+                        <span className="w-16 h-2.5 font-sans font-normal not-italic text-[10px] flex items-center text-center text-[#1D2939] ">
                           Manual Torna
                         </span>
                       </div>
@@ -65,7 +67,7 @@ const MainContent = () => {
         </div>
 
         {/*Processes content*/}
-        <div className="processesFrame flex flex-col items-start p-0 gap-4 w-[100%] h-[100%]">
+        <div className="processesFrame flex flex-col items-start p-0 gap-4 w-[100%] flex-1 overflow-hidden">
           {/*Processes frame*/}
           <div className="processFrame flex flex-col justify-between items-start p-0 gap-4 w-full h-5">
             <div className="process flex flex-row items-start p-0 gap-2 w-full h-5">
@@ -102,7 +104,7 @@ const MainContent = () => {
             </div>
           </div>
           {/*table content*/}
-          <div className="tableContent box-border flex flex-col justify-between items-start p-0 w-full h-full overflow-y-scroll no-scrollbar bg-[#FFFFFF] border border-solid border-[#EAECF0] shadow-lg rounded-lg">
+          <div className="tableContent  box-border flex flex-col justify-between items-start p-0 w-full h-auto overflow-y-scroll no-scrollbar bg-[#FFFFFF] border border-solid border-[#EAECF0] shadow-lg rounded-lg">
             <div className="cardHeader flex flex-col items-start p-0 w-full h-[64px]">
               <div className="content box-border flex flex-row justify-between items-center p-4 gap-4 border-b border-solid border-b-[#EAECF0] h-[64px] w-full ">
                 {/*Badges*/}
@@ -111,6 +113,46 @@ const MainContent = () => {
                     <p className="w-[55px] h-[18px] font-sans not-italic font-medium text-[10px] leading-[18px] text-center text-[#6941C6]">
                       10 ekipman
                     </p>
+                  </div>
+                </div>
+                {/*plus icons frame*/}
+                <div className="featureFrame relative flex flex-row items-start p-0 gap-3 w-9 h-9">
+                  <div className="featureIcon w-9 h-9 bg-[#D1E9FF] border-4 border-solid border-[#EFF8FF] rounded-full flex items-center justify-center">
+                    <div className="plus absolute text-center w-3 h-3">
+                      <Add />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/*Machine Cards frame */}
+            <div className="mahinesCards flex-1 w-full overflow-y-scroll no-scrollbar">
+              {/*Machine Card*/}
+              <div className="MachineCardFrame flex flex-row items-start p-0 w-full h-[76px]">
+                <div className="cardColoumn box-border flex flex-row items-center p-4 gap-3 w-full h-[76px] bg-[#FFFFFF] border border-solid border-[#EAECF0]">
+                  <div className="content flex flex-row items-center p-0 gap-3 w-[90%] h-11">
+                    {/*Avatar*/}
+                    <div className="profile relative box-border w-11 h-11 border border-solid border-[#EFEFEF] rounded-full bg-red-300">
+                      {/*Avatar status (offline, online, etc)*/}
+                      <div className="avatarStatus absolute w-3 h-3 right-0 bottom-8 bg-[#12B76A] border border-solid border-[#FFFFFF] rounded-md"></div>
+                    </div>
+                    {/*Machine name and model*/}
+                    <div className="machineContent flex flex-col items-start p-0 gap-3 w-[85%] h-10">
+                      {/*Machine name*/}
+                      <p className="w-full h-3.5 font-sans not-italic font-medium text-base leading-[14px] flex items-center uppercase text-[#667085]">
+                        GoodWay
+                      </p>
+                      {/*Machine model*/}
+                      <p className="w-full h-3.5 font-sans not-italic font-medium text-xs leading-[14px] flex items-center uppercase text-[#101828]">
+                        gls-200
+                      </p>
+                    </div>
+                  </div>
+                  {/*Machine info*/}
+                  <div className="machineInfo flex flex-row items-start p-0 gap-3 w-8 h-8">
+                    <button className="infoIcon  flex items-center justify-center w-8 h-8 bg-[#F2F4F7] border-4 border-solid border-[#F9FAFB] rounded-full">
+                      <DropDown className="!text-[#667085] rotate-90" />
+                    </button>
                   </div>
                 </div>
               </div>

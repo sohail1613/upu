@@ -1,28 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 import { ReactComponent as Mobile } from "../../../logos/mobileSignalIcon.svg";
 import { ReactComponent as Wifi } from "../../../logos/wifiIcon.svg";
 import { ReactComponent as batteryIcon } from "../../../logos/batteryIcon.svg";
 import { ReactComponent as Logo } from "../../../logos/Logo.svg";
 import { ReactComponent as Chat } from "../../../logos/personel.svg";
+import ExpandableRightNavBar from "./ExpandableRightNavBar";
+import ExpandableChatBar from "./ExpandableChatBar";
 
 const StatusBar = () => {
-  return (
-    <div className="statusBar flex flex-row justify-between items-center py-3 px-5 w-full h-14 bg-[#6941C6]">
-      {/*logo frame and left navBar*/}
-      <div className="logoFrame flex flex-row items-center p-0 gap-2 w-[127px] h-8">
-        <Logo />
-        <span className="flex items-center text-center text-[#FFFFFF] not-italic font-normal font-[Inter] text-xl leading-5 w-[70px] h-5">
-          upu.twin
-        </span>
-      </div>
+  const [showLeftBar, setShowLeftBar] = useState(false);
+  const [chatBar, setChatBar] = useState(false)
 
-      {/*chat and right navBar*/}
-      <div className="rightNavBar flex flex-row items-center p-0 gap-4 w-[10%] h-7">
-        <div className="chatIcon w-7 h-5">
-          <Chat style={{width:"30px", height:"30px"}} />
-        </div>
+  const handleLeftBar = () => {
+    setShowLeftBar(!showLeftBar);
+  };
+
+  const handleChatBar = () => {
+    setChatBar(!chatBar);
+  }
+
+  return (
+    <>
+      <div className="statusBar flex flex-row justify-between items-center py-3 px-5 w-full h-14 bg-[#6941C6]">
+        {/*logo frame and left navBar*/}
+        <button
+          className="logoFrame flex flex-row items-center p-0 gap-2 h-8"
+          style={{ width: ExpandableRightNavBar ? 130 : 80 }}
+          onClick={handleLeftBar}
+        >
+          <Logo />
+          <span className="flex items-center text-center text-[#FFFFFF] not-italic font-normal font-[Inter] text-xl leading-5 w-[80px] h-5">
+            upu.twin
+          </span>
+        </button>
+
+        {/*chat and right navBar*/}
+        <button className="rightNavBar flex flex-row items-center p-0 gap-4 w-[10%] h-7"
+        style={{width: ExpandableChatBar ? 40 : 80}}
+        onClick={handleChatBar}
+        >
+          <div className="chatIcon w-7 h-5">
+            <Chat style={{ width: "30px", height: "30px" }} />
+          </div>
+        </button>
       </div>
-    </div>
+      {showLeftBar && <ExpandableRightNavBar setShowLeftBar={setShowLeftBar} />}
+      {chatBar && <ExpandableChatBar setChatBar={setChatBar} />}
+    </>
   );
 };
 

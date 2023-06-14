@@ -98,13 +98,18 @@ const MainContent = () => {
               </button>
 
               {/*lathe Button*/}
-              <div className="latheButtonFrame flex flex-row items-start p-0 w-full h-10 rounded-md">
-                <button className="buttonBase gap-2 box-border flex flex-row justify-center items-center px-2 py-[14px] w-full h-10 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-md rounded-md">
-                  <img src={ProcessIcon} className="w-6 h-6" />
-                  <span className="w-20 h-5 font-sans not-italic font-medium text-xs leading-5 text-[#344054]">
-                    Manual Torna
-                  </span>
-                </button>
+              <div className="latheButtonFrame flex flex-row items-start p-0 w-full h-10 rounded-md overflow-x-scroll no-scrollbar">
+                {/*mapping for gauge button*/}
+                {value.map((data) => {
+                  return (
+                    <button className="buttonBase gap-2 box-border flex flex-row justify-center items-center px-2 py-[14px] min-w-full h-10 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-md rounded-md">
+                      <img src={ProcessIcon} className="w-6 h-6" />
+                      <span className="w-20 h-5 font-sans not-italic font-medium text-xs leading-5 text-[#344054]">
+                        Manual Torna
+                      </span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
           </div>

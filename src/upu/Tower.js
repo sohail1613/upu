@@ -11,6 +11,7 @@ import Toggle from "./Toggle";
 import StatusBar from "./responsive/components/StatusBar";
 import MainContent from "./responsive/components/MainContent";
 import EditMachineCard from "./responsive/components/EditMachineCard";
+import ExpandableRightNavBar from "./responsive/components/ExpandableRightNavBar.js";
 
 const Tower = () => {
   const [isToggled, setIsToggled] = useState(true);
@@ -76,6 +77,7 @@ const Tower = () => {
       <div className="hidden xs:flex xs:flex-col w-full h-full">
         <StatusBar />
         <MainContent />
+        
       </div>
     </>
   );

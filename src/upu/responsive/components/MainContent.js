@@ -131,11 +131,16 @@ const MainContent = () => {
               </div>
             </div>
             {/*Machine Cards frame */}
-            <div className="mahinesCards flex-1 w-full overflow-y-scroll no-scrollbar">
+            <div className="mahinesCardsflex-1 w-full overflow-y-scroll no-scrollbar">
               {/*Machine Card*/}
               {machineCard.map((machine) => {
                 return (
-                  <>
+                  //using transition it helps us to animate and duration manage animation time (slow or fast)
+                  <div
+                    className={`transition-all duration-700 ease-in flex flex-col ${
+                      showEditForm == machine.id ? "h-[220px]" : "h-[76px]"
+                    } overflow-hidden`}
+                  >
                     <div
                       className="MachineCardFrame flex flex-row items-start p-0 w-full h-[76px]"
                       key={machine.id}
@@ -164,7 +169,9 @@ const MainContent = () => {
                           <button
                             className="infoIcon  flex items-center justify-center w-8 h-8 bg-[#F2F4F7] border-4 border-solid border-[#F9FAFB] rounded-full"
                             onClick={() => {
-                              {/*data will be visible for one machine at a time*/}
+                              {
+                                /*data will be visible for one machine at a time*/
+                              }
                               if (machine.id !== showEditForm) {
                                 setShowEditForm(machine.id);
                               } else {
@@ -177,16 +184,15 @@ const MainContent = () => {
                         </div>
                       </div>
                     </div>
+
                     {/*using props to set value for each machine*/}
-                    {showEditForm === machine.id && (
-                      <EditMachineCard
-                        puantaj={machine.puantaj}
-                        nodeId={machine.nodeId}
-                        maxPersonel={machine.maxPersonal}
-                        serilaNo={machine.serialNo}
-                      />
-                    )}
-                  </>
+                    <EditMachineCard
+                      puantaj={machine.puantaj}
+                      nodeId={machine.nodeId}
+                      maxPersonel={machine.maxPersonal}
+                      serilaNo={machine.serialNo}
+                    />
+                  </div>
                 );
               })}
             </div>

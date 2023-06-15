@@ -80,7 +80,7 @@ const ExpandableChatBar = ({ setChatBar, chatBar }) => {
                   className={`button flex flex-row justify-center items-center p-1.5 gap-1.5 w-12 h-12 bg-[#0E9384] border-[0.8px] border-solid boder-[#0E9384] shadow-md rounded`}
                   onClick={() => handleActiveButton(1)}
                   style={{
-                    backgroundColor: isActive === 1 ? "#0E9384" : "black",
+                    backgroundColor: isActive === 1 ? "#0E9384" : "white",
                   }}
                 >
                   <Message />

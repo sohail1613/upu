@@ -18,12 +18,16 @@ const ExpandableRightNavBar = ({ setShowLeftBar, showLeftBar }) => {
         style={{
           width: showLeftBar ? "100vh" : "0px",
         }}
-        onClick={() => {
-          setShowLeftBar(false);
-        }}
         className="fixed z-[99999] inset-0 bg-black/25 flex"
       >
-        <div className={`${showLeftBar ? "flex" : "hidden"} flex-1`}></div>
+        <div
+          className={`${
+            showLeftBar ? "flex" : "hidden"
+          } flex-1 h-screen bg-transparent`}
+          onClick={() => {
+            setShowLeftBar(false);
+          }}
+        ></div>
         <button
           style={{
             width: showLeftBar ? "280px" : "0px",

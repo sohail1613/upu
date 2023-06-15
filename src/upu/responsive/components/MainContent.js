@@ -142,7 +142,7 @@ const MainContent = () => {
                 return (
                   //using transition it helps us to animate and duration manage animation time (slow or fast)
                   <div
-                    className={`transition-all duration-700 ease-in flex flex-col ${
+                    className={`transition-all duration-300 ease-in flex flex-col ${
                       showEditForm == machine.id ? "h-[220px]" : "h-[76px]"
                     } overflow-hidden`}
                   >

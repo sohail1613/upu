@@ -25,12 +25,19 @@ const ExpandableChatBar = ({ setChatBar, chatBar }) => {
           width: chatBar ? "100vh" : "0px",
           right: chatBar ? 0 : "-50px",
         }}
-        onClick={() => {
-          setChatBar(false);
-        }}
         className={` h-screen fixed z-[999999] bg-black/40`}
       >
-        <div className={`${chatBar ? "flex" : "hidden"} flex-1`}></div>
+        {/*another div using as a button onClicking, then it will close another opened component, only functionality in it*/}
+        <div
+          className={`${
+            chatBar ? "flex" : "hidden"
+          } flex-1 h-screen bg-transparent`}
+          onClick={() => {
+            setChatBar(false);
+          }}
+        >
+          test
+        </div>
 
         {/*main container for right menu onClick open*/}
         <button

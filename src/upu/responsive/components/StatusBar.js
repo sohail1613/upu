@@ -43,7 +43,7 @@ const StatusBar = () => {
           </div>
         </button>
       </div>
-      <ExpandableRightNavBar setShowLeftBar={setShowLeftBar}  showLeftBar={showLeftBar}/>
+      {setShowLeftBar && <ExpandableRightNavBar setShowLeftBar={setShowLeftBar}  showLeftBar={showLeftBar}/>}
       <ExpandableChatBar setChatBar={setChatBar} chatBar={chatBar} />
     </>
   );

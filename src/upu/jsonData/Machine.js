@@ -1,6 +1,7 @@
 let machine = [
   {
     id: "1",
+    processId: "1",
     name: "GoodWay",
     title: "Production Machine",
     puantaj: 125,
@@ -10,6 +11,7 @@ let machine = [
   },
   {
     id: "2",
+    processId: "2",
     name: "UPU",
     title: "Assembly Line",
     puantaj: 90,
@@ -19,6 +21,7 @@ let machine = [
   },
   {
     id: "3",
+    processId: "3",
     name: "Baca",
     title: "Testing Equipment",
     puantaj: 75,
@@ -28,6 +31,7 @@ let machine = [
   },
   {
     id: "4",
+    processId: "4",
     name: "Makina",
     title: "Packaging Station",
     puantaj: 110,
@@ -37,6 +41,7 @@ let machine = [
   },
   {
     id: "5",
+    processId: "5",
     name: "Embedded",
     title: "Quality Control",
     puantaj: 80,
@@ -47,6 +52,7 @@ let machine = [
   {
     id: "6",
     name: "IOT",
+    processId: "6",
     title: "Maintenance Unit",
     puantaj: 95,
     nodeId: "node_06",
@@ -55,6 +61,7 @@ let machine = [
   },
   {
     id: "7",
+    processId: "7",
     name: "IIOT",
     title: "Robotics System",
     puantaj: 120,
@@ -64,6 +71,7 @@ let machine = [
   },
   {
     id: "8",
+    processId: "8",
     name: "WebApp",
     title: "Material Handling",
     puantaj: 85,
@@ -73,6 +81,7 @@ let machine = [
   },
   {
     id: "9",
+    processId: "9",
     name: "Welding",
     title: "Printing Press",
     puantaj: 100,
@@ -82,6 +91,7 @@ let machine = [
   },
   {
     id: "10",
+    processId: "10",
     name: "Export",
     title: "Packaging Machine",
     puantaj: 70,

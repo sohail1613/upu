@@ -38,7 +38,7 @@ const ExpandableChatBar = ({ setChatBar, chatBar }) => {
             width: chatBar ? "352px" : "0px",
             right: chatBar ? 0 : "-50px",
           }}
-          className="onRightMenu overflow-hidden z-[99999] top-0 transition-all ease-in absolute flex box-border flex-col items-center px-4  gap-2 isolate  h-full bg-[#FFFFFF] border border-solid border-[#EAECF0] shadow-lg rounded-l-lg"
+          className="onRightMenu overflow-hidden z-[99999] top-0 transition-all duration-200 absolute flex box-border flex-col items-center px-4 gap-2 isolate h-full bg-[#FFFFFF] border border-solid border-[#EAECF0] shadow-lg rounded-l-lg"
         >
           {/* admin header*/}
           <div className="adminHeader flex flex-row justify-between items-center py-1.5 my-[16px] mt-[16px] px-0 gap-2.5 w-[320px] h-14 bg-[#FFFFFF]">

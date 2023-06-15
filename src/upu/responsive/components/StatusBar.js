@@ -33,8 +33,6 @@ const StatusBar = () => {
         </button>
 
         {/*chat and right navBar*/}
-
-        {/*chat and right navBar*/}
         <button
           className="rightNavBar flex flex-row items-center p-0 gap-4 w-[10%] h-7"
           style={{ width: ExpandableChatBar ? 40 : 80 }}
@@ -45,7 +43,7 @@ const StatusBar = () => {
           </div>
         </button>
       </div>
-      {showLeftBar && <ExpandableRightNavBar setShowLeftBar={setShowLeftBar} />}
+      <ExpandableRightNavBar setShowLeftBar={setShowLeftBar}  showLeftBar={showLeftBar}/>
       <ExpandableChatBar setChatBar={setChatBar} chatBar={chatBar} />
     </>
   );

@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { ReactComponent as Logo } from "../../../logos/logoWithText.svg";
-import { ReactComponent as LogoDesign } from "../../../logos/Logo.svg";
 import { ReactComponent as Running } from "../../../logos/equipment.svg";
 import { ReactComponent as People } from "../../../logos/personel.svg";
 import { ReactComponent as SetUp } from "../../../logos/maintenance.svg";
@@ -8,19 +7,29 @@ import { ReactComponent as Time } from "../../../logos/unplannedLosses.svg";
 import { ReactComponent as Link } from "../../../logos/shiftManagement.svg";
 import { ReactComponent as Button } from "../../../logos/report.svg";
 import { ReactComponent as Swap } from "../../../logos/swap.svg";
-import { ReactComponent as Setting } from "../../../logos/setting.svg";
+import { ReactComponent as Setting } from "../../../logos/settings.svg";
 import { ReactComponent as Avatar } from "../../../logos/Avatar.svg";
 import { ReactComponent as Expand } from "../../../logos/log-out.svg";
 
-const ExpandableRightNavBar = ({ setShowLeftBar }) => {
+const ExpandableRightNavBar = ({ setShowLeftBar, showLeftBar }) => {
   return (
     <>
-      <div className="fixed z-[99999] inset-0 bg-black/25 flex">
-        <div
-          className="flex-1 flex opacity-0"
-          onClick={() => setShowLeftBar(false)}
-        ></div>
-        <button className="expandedForm absolute top-0 left-0 z-[9999] flex flex-col justify-between items-start w-[280px] h-full bg-[#6941C6]">
+      <div
+        style={{
+          width: showLeftBar ? "100vh" : "0px",
+        }}
+        onClick={() => {
+          setShowLeftBar(false);
+        }}
+        className="fixed z-[99999] inset-0 bg-black/25 flex"
+      >
+        <div className={`${showLeftBar ? "flex" : "hidden"} flex-1`}></div>
+        <button
+          style={{
+            width: showLeftBar ? "280px" : "0px",
+          }}
+          className="expandedForm absolute overflow-hidden top-0 left-0 z-[9999] transition-all duration-200 ease-in flex flex-col justify-between items-start w-[280px] h-full bg-[#6941C6]"
+        >
           {/*navBar*/}
           <div className="navBar flex flex-col items-start w-[280px] h-[73%] gap-6 pt-8">
             {/*Logo with text*/}
@@ -35,7 +44,7 @@ const ExpandableRightNavBar = ({ setShowLeftBar }) => {
                 <div className="navBase flex flex-row justify-between items-center py-2 px-3 gap-[105px] w-[248px] h-10 bg-[#6941C6] rounded-md">
                   <div className="content flex flex-row items-center p-0 gap-3 w-[127px] h-6">
                     <Running />
-                    <span className="w-[91px] h-6 font-sans not-italic font-medium text-base leading-6 text-[#F4EBFF]">
+                    <span className="h-6 font-sans not-italic font-medium text-base leading-6 text-[#F4EBFF]">
                       Equipment
                     </span>
                   </div>
@@ -46,7 +55,7 @@ const ExpandableRightNavBar = ({ setShowLeftBar }) => {
                 <div className="navBase flex flex-row justify-between items-center py-2 px-3 gap-[105px] w-[248px] h-10 bg-[#6941C6] rounded-md">
                   <div className="content flex flex-row items-center p-0 gap-3 w-[127px] h-6">
                     <People />
-                    <span className="w-[91px] h-6 font-sans not-italic font-medium text-base leading-6 text-[#F4EBFF]">
+                    <span className="h-6 font-sans not-italic font-medium text-base leading-6 text-[#F4EBFF]">
                       Personal
                     </span>
                   </div>
@@ -57,7 +66,7 @@ const ExpandableRightNavBar = ({ setShowLeftBar }) => {
                 <div className="navBase flex flex-row justify-between items-center py-2 px-3 gap-[105px] w-[248px] h-10 bg-[#6941C6] rounded-md">
                   <div className="content flex flex-row items-center p-0 gap-3 w-[127px] h-6">
                     <SetUp />
-                    <span className="w-[99px] h-6 font-sans not-italic font-medium text-base leading-6 text-[#F4EBFF]">
+                    <span className="h-6 font-sans not-italic font-medium text-base leading-6 text-[#F4EBFF]">
                       Maintenance
                     </span>
                   </div>
@@ -68,7 +77,7 @@ const ExpandableRightNavBar = ({ setShowLeftBar }) => {
                 <div className="navBase flex flex-row justify-between items-center py-2 px-3 gap-[105px] w-[248px] h-10 bg-[#6941C6] rounded-md">
                   <div className="content flex flex-row items-center p-0 gap-3 w-[170px] h-6">
                     <Time />
-                    <span className="w-[141px] h-6 font-sans not-italic font-medium text-base leading-6 text-[#F4EBFF]">
+                    <span className="h-6 font-sans not-italic font-medium text-base leading-6 text-[#F4EBFF]">
                       UnPlanned Losses
                     </span>
                   </div>
@@ -79,7 +88,7 @@ const ExpandableRightNavBar = ({ setShowLeftBar }) => {
                 <div className="navBase flex flex-row justify-between items-center py-2 px-3 gap-[105px] w-[248px] h-10 bg-[#6941C6] rounded-md">
                   <div className="content flex flex-row items-center p-0 gap-3 absolute h-6">
                     <Link />
-                    <span className="w-[141px] h-6 font-sans not-italic font-medium text-base leading-6 text-[#F4EBFF]">
+                    <span className="h-6 font-sans not-italic font-medium text-base leading-6 text-[#F4EBFF]">
                       Shift Management
                     </span>
                   </div>
@@ -90,7 +99,7 @@ const ExpandableRightNavBar = ({ setShowLeftBar }) => {
                 <div className="navBase flex flex-row justify-between items-center py-2 px-3 gap-[105px] w-[248px] h-10 bg-[#6941C6] rounded-md">
                   <div className="content flex flex-row items-center p-0 gap-3 w-[127px] h-6">
                     <Button />
-                    <span className="w-[91px] h-6 font-sans not-italic font-medium text-base leading-6 text-[#F4EBFF]">
+                    <span className="h-6 font-sans not-italic font-medium text-base leading-6 text-[#F4EBFF]">
                       Report
                     </span>
                   </div>
@@ -105,8 +114,8 @@ const ExpandableRightNavBar = ({ setShowLeftBar }) => {
               <div className="companyNav flex flex-col items-start p-0 gap-1 w-[248px]  h-10">
                 <div className="companyBase flex flex-row items-center py-2 px-3 gap-[105px] w-[248px] h-10 bg-[#6941C6] rounded-md">
                   <div className="companyContent flex flex-row items-center p-0 gap-3 w-[166px] h-6 ">
-                    <Swap className="w-6 h-6" />
-                    <span className="w-[130px] h-6 not-italic font-medium text-base leading-6 text-[#F4EBFF]">
+                    <Swap />
+                    <span className="h-6 not-italic font-medium text-base leading-6 text-[#F4EBFF]">
                       Switch Company
                     </span>
                   </div>
@@ -115,9 +124,9 @@ const ExpandableRightNavBar = ({ setShowLeftBar }) => {
               {/*Setting*/}
               <div className="companyNav flex flex-col items-start p-0 gap-1 w-[248px] h-10">
                 <div className="companyBase flex flex-row items-center py-2 px-1 gap-[105px] w-[248px] h-10 bg-[#6941C6] rounded-md">
-                  <div className="companyContent flex flex-row items-center p-0 gap-3 w-[166px] ">
+                  <div className="companyContent flex flex-row ml-2 items-center p-0 gap-3 w-[166px] ">
                     <Setting />
-                    <span className="w-[130px] h-6 not-italic font-medium text-base leading-6 text-[#F4EBFF]">
+                    <span className="h-6 not-italic font-medium text-base leading-6 text-[#F4EBFF]">
                       Settings
                     </span>
                   </div>

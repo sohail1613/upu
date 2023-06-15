@@ -17,6 +17,11 @@ import { ReactComponent as NewMessage } from "../../../logos/newMsg.svg";
 
 const ExpandableChatBar = ({ setChatBar, chatBar }) => {
   const [chatData, setChatData] = useState(data);
+  const [isActive, setIsActive] = useState(null);
+
+  const handleActiveButton = (buttonId) => {
+    setIsActive(buttonId);
+  };
 
   return (
     <>
@@ -71,55 +76,115 @@ const ExpandableChatBar = ({ setChatBar, chatBar }) => {
             {/*Message button*/}
             <div className="message flex flex-col  bg-white items-center p-0 w-12 h-[68px]">
               <div className="buttonContainer flex flex-row items-start justify-center p-0 w-12 h-12 rounded-md">
-                <button className="button flex flex-row justify-center items-center p-1.5 gap-1.5 w-12 h-12 bg-[#0E9384] border-[0.8px] border-solid boder-[#0E9384] shadow-md rounded">
+                <button
+                  className={`button flex flex-row justify-center items-center p-1.5 gap-1.5 w-12 h-12 bg-[#0E9384] border-[0.8px] border-solid boder-[#0E9384] shadow-md rounded`}
+                  onClick={() => handleActiveButton(1)}
+                  style={{
+                    backgroundColor: isActive === 1 ? "#0E9384" : "black",
+                  }}
+                >
                   <Message />
                 </button>
               </div>
-              <p className="not-italic font-medium font-[Codec Pro] text-xs leading-5 flex items-center text-[#0E9384]">
+              <p
+                className="not-italic font-medium font-[Codec Pro] text-xs leading-5 flex items-center text-[#98A2B3]"
+                onClick={() => handleActiveButton(1)}
+                style={{
+                  color: isActive === 1 ? "#0E9384" : "#98A2B3",
+                }}
+              >
                 Message
               </p>
             </div>
             {/*Task button*/}
             <div className="flex flex-col items-center p-0 w-12 h-[68px] ">
-              <div className="flex flex-row justify-center items-center p-[6.4px] gap-[6.4px]  w-12 h-12 bg-[#FFFFFF] border-[0.8px] border-solid border-[#D0D5DD] shadow-lg rounded">
+              <div
+                onClick={() => handleActiveButton(2)}
+                style={{
+                  backgroundColor: isActive === 2 ? "#0E9384" : "white",
+                }}
+                className="flex flex-row justify-center items-center p-[6.4px] gap-[6.4px]  w-12 h-12 bg-[#FFFFFF] border-[0.8px] border-solid border-[#D0D5DD] shadow-lg rounded"
+              >
                 <button className="flex flex-row items-start p-[6.4px] gap-[6.4px] w-[38.4px] h-[38.4px]">
                   <Task />
                 </button>
               </div>
-              <p className="w-[33px] h-5 font-[Codec Pro] not-italic font-medium text-xs leading-5 flex items-center text-[#98A2B3] ">
+              <p
+                className="w-[33px] h-5 font-[Codec Pro] not-italic font-medium text-xs leading-5 flex items-center text-[#98A2B3] "
+                onClick={() => handleActiveButton(2)}
+                style={{
+                  color: isActive === 2 ? "#0E9384" : "#98A2B3",
+                }}
+              >
                 Task
               </p>
             </div>
             {/*Bell button*/}
             <div className="flex flex-col items-center p-0 w-12 h-[68px] ">
-              <div className="flex flex-row justify-center items-center p-[6.4px] gap-[6.4px]  w-12 h-12 bg-[#FFFFFF] border-[0.8px] border-solid border-[#D0D5DD] shadow-lg rounded">
+              <div
+                onClick={() => handleActiveButton(3)}
+                style={{
+                  backgroundColor: isActive === 3 ? "#0E9384" : "white",
+                }}
+                className="flex flex-row justify-center items-center p-[6.4px] gap-[6.4px]  w-12 h-12 bg-[#FFFFFF] border-[0.8px] border-solid border-[#D0D5DD] shadow-lg rounded"
+              >
                 <button className="flex flex-row items-start p-[6.4px] gap-[6.4px] w-[38.4px] h-[38.4px]">
                   <Bell />
                 </button>
               </div>
-              <p className="w-[33px] h-5 font-[Codec Pro] not-italic font-medium text-xs leading-5 flex items-center text-[#98A2B3] ">
+              <p
+                className="w-[33px] h-5 font-[Codec Pro] not-italic font-medium text-xs leading-5 flex items-center text-[#98A2B3]"
+                onClick={() => handleActiveButton(3)}
+                style={{
+                  color: isActive === 3 ? "#0E9384" : "#98A2B3",
+                }}
+              >
                 Bell
               </p>
             </div>
             {/*Poll button*/}
             <div className="flex flex-col items-center p-0 w-12 h-[68px] ">
-              <div className="flex flex-row justify-center items-center p-[6.4px] gap-[6.4px]  w-12 h-12 bg-[#FFFFFF] border-[0.8px] border-solid border-[#D0D5DD] shadow-lg rounded">
+              <div
+                onClick={() => handleActiveButton(4)}
+                style={{
+                  backgroundColor: isActive === 4 ? "#0E9384" : "white",
+                }}
+                className="flex flex-row justify-center items-center p-[6.4px] gap-[6.4px]  w-12 h-12 bg-[#FFFFFF] border-[0.8px] border-solid border-[#D0D5DD] shadow-lg rounded"
+              >
                 <button className="flex flex-row items-start p-[6.4px] gap-[6.4px] w-[38.4px] h-[38.4px]">
                   <Poll />
                 </button>
               </div>
-              <p className="w-[33px] h-5 font-[Codec Pro] not-italic font-medium text-xs leading-5 flex items-center text-[#98A2B3] ">
+              <p
+                className="w-[33px] h-5 font-[Codec Pro] not-italic font-medium text-xs leading-5 flex items-center text-[#98A2B3]"
+                onClick={() => handleActiveButton(4)}
+                style={{
+                  color: isActive === 4 ? "#0E9384" : "#98A2B3",
+                }}
+              >
                 Poll
               </p>
             </div>
             {/*Attend button*/}
             <div className="flex flex-col items-center p-0 w-12 h-[68px] ">
-              <div className="flex flex-row justify-center items-center p-[6.4px] gap-[6.4px]  w-12 h-12 bg-[#FFFFFF] border-[0.8px] border-solid border-[#D0D5DD] shadow-lg rounded">
+              <div
+                onClick={() => handleActiveButton(5)}
+                style={{
+                  backgroundColor: isActive === 5 ? "#0E9384" : "white",
+                }}
+                className="flex flex-row justify-center items-center p-[6.4px] gap-[6.4px]  w-12 h-12 bg-[#FFFFFF] border-[0.8px] border-solid border-[#D0D5DD] shadow-lg rounded"
+              >
                 <button className="flex flex-row items-start p-[6.4px] gap-[6.4px] w-[38.4px] h-[38.4px]">
                   <Attend />
                 </button>
               </div>
-              <p className="w-[33px] h-5 font-[Codec Pro] not-italic font-medium text-xs leading-5 flex items-center text-[#98A2B3] ">
+              <p
+                className="w-[33px] h-5 font-[Codec Pro] not-italic font-medium text-xs leading-5 flex items-center text-[#98A2B3] "
+                onClick={() => handleActiveButton(5)}
+                style={{
+                  color: isActive === 5 ? "#0E9384" : "#98A2B3",
+                }}
+              >
                 Attend
               </p>
             </div>

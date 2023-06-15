@@ -73,11 +73,9 @@ const Tower = () => {
       </div>
 
       {/*Mobile compatible responsive */}
-
       <div className="hidden xs:flex xs:flex-col w-full h-full">
         <StatusBar />
         <MainContent />
-        
       </div>
     </>
   );

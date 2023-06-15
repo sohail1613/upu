@@ -98,7 +98,7 @@ const MainContent = () => {
               </button>
 
               {/*lathe Button*/}
-              <div className="latheButtonFrame flex flex-row items-start p-0 w-full h-10 rounded-md overflow-x-scroll no-scrollbar">
+              <div className="latheButtonFrame flex flex-row items-start p-0 w-full h-10 gap-3 rounded-md overflow-x-scroll no-scrollbar">
                 {/*mapping for gauge button*/}
                 {value.map((data) => {
                   return (

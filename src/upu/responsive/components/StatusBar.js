@@ -9,16 +9,14 @@ import ExpandableChatBar from "./ExpandableChatBar";
 
 const StatusBar = () => {
   const [showLeftBar, setShowLeftBar] = useState(false);
-  const [chatBar, setChatBar] = useState(false)
+  const [chatBar, setChatBar] = useState(false);
 
   const handleLeftBar = () => {
     setShowLeftBar(!showLeftBar);
   };
-
   const handleChatBar = () => {
     setChatBar(!chatBar);
-  }
-
+  };
   return (
     <>
       <div className="statusBar flex flex-row justify-between items-center py-3 px-5 w-full h-14 bg-[#6941C6]">
@@ -35,9 +33,12 @@ const StatusBar = () => {
         </button>
 
         {/*chat and right navBar*/}
-        <button className="rightNavBar flex flex-row items-center p-0 gap-4 w-[10%] h-7"
-        style={{width: ExpandableChatBar ? 40 : 80}}
-        onClick={handleChatBar}
+
+        {/*chat and right navBar*/}
+        <button
+          className="rightNavBar flex flex-row items-center p-0 gap-4 w-[10%] h-7"
+          style={{ width: ExpandableChatBar ? 40 : 80 }}
+          onClick={handleChatBar}
         >
           <div className="chatIcon w-7 h-5">
             <Chat style={{ width: "30px", height: "30px" }} />
@@ -45,7 +46,7 @@ const StatusBar = () => {
         </button>
       </div>
       {showLeftBar && <ExpandableRightNavBar setShowLeftBar={setShowLeftBar} />}
-      {chatBar && <ExpandableChatBar setChatBar={setChatBar} />}
+      <ExpandableChatBar setChatBar={setChatBar} chatBar={chatBar} />
     </>
   );
 };

@@ -1,6 +1,6 @@
 let data = [
   {
-    id: " ",
+    id: "0",
     machineName:"All Machines",
     min: "25",
     max: "75",

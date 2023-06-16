@@ -15,13 +15,24 @@ const MainContent = () => {
   const [value, setValue] = useState(data);
   const [machineCard, setMachineCard] = useState(machine);
   const [showEditForm, setShowEditForm] = useState("");
-  const [selectedProcess, setSelectedProcess] = useState('')
+  const [selectedProcess, setSelectedProcess] = useState('0')
+
+  // const filterMachineCard = machineCard.filter((machine) => {
+  //   const card = value.find((machineId) => machineId.id === machine.processId);
+  //   return card && card.id === selectedProcess;
+  // });
 
   const filterMachineCard = machineCard.filter((machine) => {
-    const card = value.find((machineId) => machineId.id === machine.processId);
-    return card && card.id === selectedProcess;
+    if (selectedProcess === '0') {
+      // console.log(machineCard)
+      return true;
+    } else {
+      // Print only the respective cards for other selectedProcess values
+      return machine.processId === selectedProcess;
+    }
   });
 
+  
   
  
   return (
@@ -114,7 +125,10 @@ const MainContent = () => {
                 {value.map((data) => {
                   return (
                     <button
-                    onClick={()=>{setSelectedProcess(data.id)}}
+                    onClick={()=>{
+                      {/*console.log('machineCards', machineCard)*/}
+                      setSelectedProcess(data.id);
+                    }}
                       className="buttonBase gap-2 box-border flex flex-row justify-center items-center px-2 py-[14px] min-w-[75%] h-10 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-md rounded-md"
                       key={data.processId}
                     >

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ReactComponent as DotIcon } from "../../../logos/threeDotsIcon.svg";
 import { ReactComponent as Lathe } from "../../../logos/info.svg";
 import { ReactComponent as Plus } from "../../../logos/addIcon.svg";
@@ -15,7 +15,15 @@ const MainContent = () => {
   const [value, setValue] = useState(data);
   const [machineCard, setMachineCard] = useState(machine);
   const [showEditForm, setShowEditForm] = useState("");
+  const [selectedProcess, setSelectedProcess] = useState('')
 
+  const filterMachineCard = machineCard.filter((machine) => {
+    const card = value.find((machineId) => machineId.id === machine.processId);
+    return card && card.id === selectedProcess;
+  });
+
+  
+ 
   return (
     <>
       <div className="main flex flex-col items-center py-5 px-5 gap-6 w-full h-[882px] overflow-y-scroll no-scrollbar">
@@ -28,19 +36,22 @@ const MainContent = () => {
             </span>
             <DotIcon className="flex flex-col items-start p-0 w-20 h-5 left-[312px] t-5 z-[1px] " />
           </div>
-          {/*Gauge chart*/}
 
+          {/*Gauge chart*/}
           <div className="gaugeFrame relative flex flex-row items-start pt-2 pr-5 pb-4 pl-0 gap-3 w-[100%] h-[140px] overflow-x-scroll no-scrollbar ">
             {/*mapping*/}
             {value.map((data) => {
               return (
-                <div className="chart box-border min-w-[148px] h-[110px] bg-white border border-solid border-[#D0D5DD] shadow-lg rounded-lg relative">
+                <div
+                  className="chart box-border min-w-[148px] h-[110px] bg-white border border-solid border-[#D0D5DD] shadow-lg rounded-lg relative"
+                  key={data.id}
+                >
                   <div className="machine flex flex-row items-start  p-0 absolute w-[120px] h-7 left-3.5 top-[93px] rounded-lg">
-                    <div className="iconAndText box-border justify-between flex flex-row items-center py-1.5 px-2.5 w-[120px] h-7 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-lg rounded-md">
+                    <div className="iconAndText box-border justify-center flex flex-row items-center py-1.5 px-2.5 w-[120px] h-7 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-lg rounded-md">
                       <img src={ProcessIcon} />
-                      <div className="text flex flex-row items-start p-0 w-16 h-2.5">
-                        <span className="w-16 h-2.5 font-sans font-normal not-italic text-[10px] flex items-center text-center text-[#1D2939] ">
-                          Manual Torna
+                      <div className="text flex flex-row items-start p-0 h-2.5">
+                        <span className="h-2.5 ml-2 font-sans font-normal not-italic text-[10px] flex items-center text-center text-[#1D2939] ">
+                          {data.machineName}
                         </span>
                       </div>
                     </div>
@@ -102,10 +113,14 @@ const MainContent = () => {
                 {/*mapping for gauge button*/}
                 {value.map((data) => {
                   return (
-                    <button className="buttonBase gap-2 box-border flex flex-row justify-center items-center px-2 py-[14px] min-w-full h-10 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-md rounded-md">
+                    <button
+                    onClick={()=>{setSelectedProcess(data.id)}}
+                      className="buttonBase gap-2 box-border flex flex-row justify-center items-center px-2 py-[14px] min-w-[75%] h-10 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-md rounded-md"
+                      key={data.processId}
+                    >
                       <img src={ProcessIcon} className="w-6 h-6" />
                       <span className="w-20 h-5 font-sans not-italic font-medium text-xs leading-5 text-[#344054]">
-                        Manual Torna
+                        {data.machineName}
                       </span>
                     </button>
                   );
@@ -138,7 +153,10 @@ const MainContent = () => {
             {/*Machine Cards frame */}
             <div className="mahinesCardsflex-1 w-full overflow-y-scroll no-scrollbar">
               {/*Machine Card*/}
-              {machineCard.map((machine) => {
+              {filterMachineCard.map((machine) => {
+                {/*console.log('ids', selectedProcess)
+                console.log('cards', filterMachineCard)
+                console.log('machineCards', machineCard)*/}
                 return (
                   //using transition it helps us to animate and duration manage animation time (slow or fast)
                   <div
@@ -196,6 +214,7 @@ const MainContent = () => {
                       nodeId={machine.nodeId}
                       maxPersonel={machine.maxPersonal}
                       serilaNo={machine.serialNo}
+                      processId={machine.processId}
                     />
                   </div>
                 );

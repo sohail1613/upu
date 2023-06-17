@@ -7,16 +7,18 @@ import LeftBarExpand from "./upu/LeftBarExpand";
 import RightMenuBar from "./upu/RightMenuBar";
 import FactoryLayout from "./upu/FactoryLayout";
 import Mobile from "./upu/responsive/components/Mobile";
+import BasicFrom from "./employeeDetails/BasicFrom";
 
 function App() {
   return (
     <div>
-      <Tower />
+      <BasicFrom />
     </div>
   );
 }
 
 export default App;
+
 // <Tower />
 // <Gauge />
 // <LeftBarExpand />

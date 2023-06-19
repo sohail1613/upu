@@ -9,6 +9,8 @@ import { ReactComponent as Equipment } from "../logos/valve.svg";
 import { ReactComponent as Shift } from "../logos/calender.svg";
 
 const Header = () => {
+
+
   return (
     <>
       <div className="headerFrame flex flex-row justify-between items-center py-2 mt-2 px-8 absolute w-full h-[70px] ">

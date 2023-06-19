@@ -1,4 +1,5 @@
 import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Tower from "./upu/Tower";
 import Gauge from "./upu/Gauge";
 import GaugeCalculator from "./upu/GaugeCalculator";
@@ -11,14 +12,21 @@ import BasicFrom from "./employeeDetails/BasicFrom";
 
 function App() {
   return (
-    <div>
-      <BasicFrom />
-    </div>
+    <>
+      <Router>
+        <Routes>
+          <Route path="" element={<BasicFrom />} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 
 export default App;
 
+// <div>
+//   <BasicFrom />
+// </div>
 // <Tower />
 // <Gauge />
 // <LeftBarExpand />

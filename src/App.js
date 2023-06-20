@@ -9,15 +9,19 @@ import RightMenuBar from "./upu/RightMenuBar";
 import FactoryLayout from "./upu/FactoryLayout";
 import Mobile from "./upu/responsive/components/Mobile";
 import BasicFrom from "./employeeDetails/BasicFrom";
+import Header from "./employeeDetails/Header";
+import Footer from "./employeeDetails/Footer";
 
 function App() {
   return (
     <>
+    <Header />
       <Router>
         <Routes>
           <Route path="" element={<BasicFrom />} />
         </Routes>
       </Router>
+      <Footer />
     </>
   );
 }

@@ -4,17 +4,19 @@ import MainContent from "./MainContent";
 import Footer from "./Footer";
 import LogOutAndLanguage from "./LogOutAndLanguage";
 import DetailForm from "./DetailForm";
+import DepartmenForm from "./DepartmenForm";
 
 const BasicFrom = () => {
   return (
     <>
-      <DetailForm />
+      <DepartmenForm />
     </>
   );
 };
 
 export default BasicFrom;
 
+// <DetailForm />
 // <Header />
 // <MainContent />
 // <Footer />

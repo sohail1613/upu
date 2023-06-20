@@ -11,14 +11,21 @@ import Mobile from "./upu/responsive/components/Mobile";
 import BasicFrom from "./employeeDetails/BasicFrom";
 import Header from "./employeeDetails/Header";
 import Footer from "./employeeDetails/Footer";
+import MainContent from "./employeeDetails/MainContent";
+import DepartmenForm from "./employeeDetails/DepartmenForm";
+import DetailForm from "./employeeDetails/DetailForm";
 
 function App() {
+
+
   return (
     <>
+    <Router>
     <Header />
-      <Router>
         <Routes>
-          <Route path="" element={<BasicFrom />} />
+          <Route path="/" element={<MainContent />} />
+          <Route path="/detail" element={<DetailForm />} />
+          <Route path="/department" element={<DepartmenForm />} />
         </Routes>
       </Router>
       <Footer />
@@ -29,7 +36,7 @@ function App() {
 export default App;
 
 // <div>
-//   <BasicFrom />
+// <BasicFrom />
 // </div>
 // <Tower />
 // <Gauge />

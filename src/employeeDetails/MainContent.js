@@ -3,7 +3,6 @@ import { ReactComponent as Upu } from "../logos/upu.io.svg";
 import { ReactComponent as Turkish } from "../logos/turkish.svg";
 import { ReactComponent as English } from "../logos/english.svg";
 import { useNavigate } from "react-router-dom";
-import { Path } from "three";
 
 const MainContent = () => {
   const navigate = useNavigate();

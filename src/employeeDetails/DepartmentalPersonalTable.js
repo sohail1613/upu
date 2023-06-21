@@ -96,7 +96,9 @@ const DepartmentalPersonalTable = () => {
                     </div>
                     {/*modification icons*/}
                     <div className="modification flex flex-row items-start p-0 gap-2 w-[72px] h-8">
-                      <button className="editIcon flex justify-center text-[#7F56D9] items-center w-8 h-8 bg-[#F4EBFF] rounded ">
+                      <button
+                      onClick={handleModalOpen}
+                      className="editIcon flex justify-center text-[#7F56D9] items-center w-8 h-8 bg-[#F4EBFF] rounded ">
                         <Edit />
                       </button>
                       <button

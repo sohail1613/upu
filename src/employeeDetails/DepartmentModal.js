@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ReactComponent as Cross } from "../logos/crossIcon.svg";
 
 const DepartmentModal = () => {
@@ -15,10 +15,29 @@ const DepartmentModal = () => {
   };
 
   const handleSave = () => {
-    localStorage.setItem(`id: ${inputId}`, inputValue);
+    const storedData = localStorage.getItem("departments");
+    let departments = [];
+    if (storedData) {
+      departments = JSON.parse(storedData);
+    }
+
+    const newDepartment = {
+      id: inputId,
+      value: inputValue,
+    };
+    departments.push(newDepartment);
+    localStorage.setItem("departments", JSON.stringify(departments));
+    // localStorage.setItem(`id: ${inputId}`, inputValue);
     setInputValue("");
     setInputId(inputId + 1);
   };
+  useEffect(() => {
+    const storeData = localStorage.getItem("departments");
+    if (storeData) {
+      const parsedData = JSON.parse(storeData);
+      setInputId(parsedData.length);
+    }
+  });
 
   return (
     <>

@@ -3,10 +3,12 @@ import { ReactComponent as Search } from "../logos/search.svg";
 import { ReactComponent as Edit } from "../logos/edit.svg";
 import { ReactComponent as Delete } from "../logos/delete.svg";
 import { ReactComponent as AddIcon } from "../logos/addIcon.svg";
+import DepartmentModal from "./DepartmentModal";
 
 const DepartmentalPersonalTable = () => {
   const [department, setDepartment] = useState([]);
   const [cardCount, setCardCount] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleDeleteCard = (index) => {
     const updateDepartments = [...department];
@@ -14,6 +16,10 @@ const DepartmentalPersonalTable = () => {
     setDepartment(updateDepartments);
     setCardCount(updateDepartments.length);
     localStorage.setItem("departments", JSON.stringify(updateDepartments));
+  };
+
+  const handleModalOpen = () => {
+    setIsModalOpen(!isModalOpen);
   };
 
   useEffect(() => {
@@ -25,7 +31,7 @@ const DepartmentalPersonalTable = () => {
     }
   }, []);
 
-  if (cardCount === 0 ){
+  if (cardCount === 0) {
     return null;
   }
 
@@ -109,7 +115,10 @@ const DepartmentalPersonalTable = () => {
           </div>
           {/*card add button*/}
           <div className="addCard justify-center items-center flex w-full h-[40px] pb-1">
-            <button className="button flex flex-row justify-center items-center gap-1 w-[90%] h-full bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-lg rounded-lg self-stretch">
+            <button
+              onClick={handleModalOpen}
+              className="button flex flex-row justify-center items-center gap-1 w-[90%] h-full bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-lg rounded-lg self-stretch"
+            >
               <AddIcon className="w-3 h-4 text-[#344054]" />
               <p className="w-8 h-6 font-sans not-italic font-medium text-base leading-6 text-[#344054]">
                 Ekle
@@ -132,6 +141,7 @@ const DepartmentalPersonalTable = () => {
           </button>
         </div>
       </div>
+      {isModalOpen && <DepartmentModal closeModal={handleModalOpen} />}
     </>
   );
 };

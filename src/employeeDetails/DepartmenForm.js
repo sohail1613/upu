@@ -1,14 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ReactComponent as AddIcon } from "../logos/addIcon.svg";
 import { ReactComponent as Baca } from "../logos/bacaLogo2.svg";
 import DepartmentModal from "./DepartmentModal";
+import DepartmentalPersonalTable from "./DepartmentalPersonalTable";
 
 const DepartmenForm = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [hasCardData, setHasCardData] = useState(false);
 
   const handleOpenModal = () => {
     setIsModalOpen(!isModalOpen);
   };
+
+  useEffect(() => {
+    const storedDepartments = localStorage.getItem("departments");
+    if (storedDepartments) {
+      const parsedDepartments = JSON.parse(storedDepartments);
+      if (parsedDepartments.length > 0) {
+        setHasCardData(true);
+      }
+    }
+  }, []);
 
   return (
     <>
@@ -39,8 +51,9 @@ const DepartmenForm = () => {
       <button>
         <Baca className="logoFrame box-border absolute w-[100px] h-[70px] right-11 bottom-11 bg-[#FFFFFF] backdrop-blur-lg rounded-md " />
       </button>
-      {/*if value is true then show modal, else don't show*/}
-      {isModalOpen && <DepartmentModal />}
+
+      {/*if value is true and has card data, show table component, else show current component*/}
+      {isModalOpen ? (<DepartmentModal />) : hasCardData ? (<DepartmentalPersonalTable />) : null}
     </>
   );
 };

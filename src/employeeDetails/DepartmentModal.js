@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { ReactComponent as Cross } from "../logos/crossIcon.svg";
+import DepartmentalPersonalTable from "./DepartmentalPersonalTable";
 
 const DepartmentModal = () => {
   const [isOpen, setIsOpen] = useState(true);
   const [inputValue, setInputValue] = useState("");
   const [inputId, setInputId] = useState(0);
+  const [departmentalCard, setDepartmentalCard] = useState(false);
 
   const handleForm = () => {
     setIsOpen(!isOpen);
@@ -12,6 +14,10 @@ const DepartmentModal = () => {
 
   const handleInputchange = (event) => {
     setInputValue(event.target.value);
+  };
+
+  const handleDepartmentalCard = () => {
+    setDepartmentalCard(!departmentalCard);
   };
 
   const handleSave = () => {
@@ -30,7 +36,11 @@ const DepartmentModal = () => {
     // localStorage.setItem(`id: ${inputId}`, inputValue);
     setInputValue("");
     setInputId(inputId + 1);
+
+    handleDepartmentalCard();
+    setIsOpen(false);
   };
+
   useEffect(() => {
     const storeData = localStorage.getItem("departments");
     if (storeData) {
@@ -107,6 +117,7 @@ const DepartmentModal = () => {
           </div>
         </div>
       )}
+      {departmentalCard && <DepartmentalPersonalTable />}
     </>
   );
 };

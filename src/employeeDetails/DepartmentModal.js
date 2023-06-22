@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import { ReactComponent as Cross } from "../logos/crossIcon.svg";
 import DepartmentalPersonalTable from "./DepartmentalPersonalTable";
 
-const DepartmentModal = ({ closeModal, modalValue, setModalValue, selectedDepartment }) => {
+const DepartmentModal = ({
+  closeModal,
+  modalValue,
+  setModalValue,
+  selectedDepartment,
+}) => {
   const [isOpen, setIsOpen] = useState(true);
   const [inputValue, setInputValue] = useState("");
   const [inputId, setInputId] = useState(0);
@@ -29,32 +34,36 @@ const DepartmentModal = ({ closeModal, modalValue, setModalValue, selectedDepart
     }
 
     const newDepartment = {
-      id: inputId,
+      id: inputId + 1,
       value: inputValue,
     };
     departments.push(newDepartment);
     localStorage.setItem("departments", JSON.stringify(departments));
     // localStorage.setItem(`id: ${inputId}`, inputValue);
     setInputValue(inputValue);
-    // setModalValue(inputValue);
     setInputId(inputId + 1);
 
     setIsOpen(false);
   };
 
-//   useEffect(() => {
-//     const storeData = localStorage.getItem("departments");
-//     if (storeData) {
-//       const parsedData = JSON.parse(storeData);
-//       setInputId(parsedData.length);
-//     }
-//   });
+  //   useEffect(() => {
+  //     const storeData = localStorage.getItem("departments");
+  //     if (storeData) {
+  //       const parsedData = JSON.parse(storeData);
+  //       setInputId(parsedData.length);
+  //     }
+  //   });
 
   useEffect(() => {
-    if(selectedDepartment) {
-        setInputValue(selectedDepartment.value);
+    const storeData = localStorage.getItem("departments");
+    if (storeData) {
+      const cards = JSON.parse(storeData);
+      setInputId(cards.length);
     }
-  }, [selectedDepartment])
+    if (selectedDepartment) {
+      setInputValue(selectedDepartment?.value);
+    }
+  }, [selectedDepartment]);
 
   return (
     <>

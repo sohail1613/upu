@@ -12,6 +12,8 @@ const DepartmentalPersonalTable = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchCard, setSearchCard] = useState("");
   const [filteredCards, setFilteredCards] = useState([]);
+  const [modalValue, setModalValue] = useState("");
+  const [selectedDepartment, setSelectedDepartment] = useState([]);
 
   //navigating to the components with respect to clicks
   const navigate = useNavigate();
@@ -19,11 +21,14 @@ const DepartmentalPersonalTable = () => {
     navigate("/persons");
   };
   const navigateToLanguage = () => {
-    navigate("/");
+    navigate("/detail");
   };
 
   const handleDeleteCard = (cardId) => {
+    console.log(cardId, department);
+
     const updatedDepartments = department.filter((item) => item.id !== cardId);
+    console.log(updatedDepartments);
     setDepartment(updatedDepartments);
     setCardCount(updatedDepartments.length);
     localStorage.setItem("departments", JSON.stringify(updatedDepartments));
@@ -46,6 +51,8 @@ const DepartmentalPersonalTable = () => {
   };
 
   const handleModalOpen = (index) => {
+    const selectedDept = index !== undefined ? department[index] : null;
+    setSelectedDepartment(selectedDept);
     setIsModalOpen(!isModalOpen);
     const userInput = document.getElementById("departments")?.value;
     const storedDepartments = localStorage.getItem("departments");
@@ -55,7 +62,8 @@ const DepartmentalPersonalTable = () => {
 
     if (index !== undefined) {
       //update existing department
-      updatedDepartments[index].value = userInput;
+
+    //   updatedDepartments[index].value = userInput;
     } else {
       //add new department
       const newDepartment = {
@@ -63,8 +71,9 @@ const DepartmentalPersonalTable = () => {
         value: userInput,
       };
       updatedDepartments.push(newDepartment);
+      setCardCount(cardCount + 1);
+    //   updateCards(updatedDepartments);
     }
-
     localStorage.setItem("departments", JSON.stringify(updatedDepartments));
 
     updateCards(updatedDepartments);
@@ -138,6 +147,7 @@ const DepartmentalPersonalTable = () => {
               {/*card and mapping on it*/}
 
               {filteredCards.map((item, index) => {
+                console.log("filteredcard", item);
                 return (
                   <div
                     key={index}
@@ -209,7 +219,14 @@ const DepartmentalPersonalTable = () => {
           </button>
         </div>
       </div>
-      {isModalOpen && <DepartmentModal closeModal={handleModalOpen} />}
+      {isModalOpen && (
+        <DepartmentModal
+          closeModal={handleModalOpen}
+          modalValue={modalValue}
+          setModalValue={setModalValue}
+          selectedDepartment={selectedDepartment}
+        />
+      )}
     </>
   );
 };

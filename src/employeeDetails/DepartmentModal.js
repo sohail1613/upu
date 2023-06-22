@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ReactComponent as Cross } from "../logos/crossIcon.svg";
 import DepartmentalPersonalTable from "./DepartmentalPersonalTable";
 
-const DepartmentModal = () => {
+const DepartmentModal = ({ closeModal }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [inputValue, setInputValue] = useState("");
   const [inputId, setInputId] = useState(0);
@@ -83,7 +83,8 @@ const DepartmentModal = () => {
               <div className="inputFrame box-border flex flex-row items-center py-2.5 px-3.5 gap-2 w-full h-11 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-lg rounded-lg">
                 <div className="content flex flex-row items-center p-0 gap-2 w-full h-6">
                   <input
-                    placeholder="Damacana Yönetimi"
+                    id="departments"
+                    placeholder="Departments Name"
                     value={inputValue}
                     onChange={handleInputchange}
                     className="w-full h-full font-sans not-italic font-normal text-base leading-6 text-[#667085] outline-none"

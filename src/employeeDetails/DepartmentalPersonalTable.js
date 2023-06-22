@@ -23,12 +23,11 @@ const DepartmentalPersonalTable = () => {
   };
 
   const handleDeleteCard = (cardId) => {
-    const updatedDepartments = department.filter(
-        (item) => item.id !== cardId
-    );
+    const updatedDepartments = department.filter((item) => item.id !== cardId);
     setDepartment(updatedDepartments);
     setCardCount(updatedDepartments.length);
-    localStorage.setItem("departments", JSON.stringify(updatedDepartments))
+    localStorage.setItem("departments", JSON.stringify(updatedDepartments));
+    updateCards(updatedDepartments);
     // const updateDepartments = [...department];
     // updateDepartments.splice(index, 1);
     // setDepartment(updateDepartments);
@@ -48,11 +47,23 @@ const DepartmentalPersonalTable = () => {
 
   const handleModalOpen = (index) => {
     setIsModalOpen(!isModalOpen);
-    const userInput = document.getElementById("departments").value;
+    const userInput = document.getElementById("departments")?.value;
     const storedDepartments = localStorage.getItem("departments");
     const parsedDepartments = JSON.parse(storedDepartments);
     const updatedDepartments = [...parsedDepartments];
-    updatedDepartments[index].value = userInput;
+    // updatedDepartments[index].value = userInput;
+
+    if (index !== undefined) {
+      //update existing department
+      updatedDepartments[index].value = userInput;
+    } else {
+      //add new department
+      const newDepartment = {
+        id: cardCount + 1,
+        value: userInput,
+      };
+      updatedDepartments.push(newDepartment);
+    }
 
     localStorage.setItem("departments", JSON.stringify(updatedDepartments));
 
@@ -112,6 +123,7 @@ const DepartmentalPersonalTable = () => {
                   </button>
 
                   <input
+                    id="departments"
                     type="text"
                     value={searchCard}
                     onChange={(e) => setSearchCard(e.target.value)}

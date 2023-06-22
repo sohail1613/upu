@@ -4,22 +4,59 @@ import { ReactComponent as Edit } from "../logos/edit.svg";
 import { ReactComponent as Delete } from "../logos/delete.svg";
 import { ReactComponent as AddIcon } from "../logos/addIcon.svg";
 import DepartmentModal from "./DepartmentModal";
+import { useNavigate } from "react-router-dom";
 
 const DepartmentalPersonalTable = () => {
   const [department, setDepartment] = useState([]);
   const [cardCount, setCardCount] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [searchCard, setSearchCard] = useState("");
+  const [filteredCards, setFilteredCards] = useState([]);
 
-  const handleDeleteCard = (index) => {
-    const updateDepartments = [...department];
-    updateDepartments.splice(index, 1);
-    setDepartment(updateDepartments);
-    setCardCount(updateDepartments.length);
-    localStorage.setItem("departments", JSON.stringify(updateDepartments));
+  //navigating to the components with respect to clicks
+  const navigate = useNavigate();
+  const navigateToPersons = () => {
+    navigate("/persons");
+  };
+  const navigateToLanguage = () => {
+    navigate("/");
   };
 
-  const handleModalOpen = () => {
+  const handleDeleteCard = (cardId) => {
+    const updatedDepartments = department.filter(
+        (item) => item.id !== cardId
+    );
+    setDepartment(updatedDepartments);
+    setCardCount(updatedDepartments.length);
+    localStorage.setItem("departments", JSON.stringify(updatedDepartments))
+    // const updateDepartments = [...department];
+    // updateDepartments.splice(index, 1);
+    // setDepartment(updateDepartments);
+    // setCardCount(updateDepartments.length);
+    // localStorage.setItem("departments", JSON.stringify(updateDepartments));
+  };
+
+  const updateCards = (updatedDepartments) => {
+    const filterCards = updatedDepartments.filter((item) =>
+      item.value.toLowerCase().includes(searchCard.toLowerCase())
+    );
+
+    setDepartment(updatedDepartments);
+    setFilteredCards(filterCards);
+    setCardCount(filterCards.length);
+  };
+
+  const handleModalOpen = (index) => {
     setIsModalOpen(!isModalOpen);
+    const userInput = document.getElementById("departments").value;
+    const storedDepartments = localStorage.getItem("departments");
+    const parsedDepartments = JSON.parse(storedDepartments);
+    const updatedDepartments = [...parsedDepartments];
+    updatedDepartments[index].value = userInput;
+
+    localStorage.setItem("departments", JSON.stringify(updatedDepartments));
+
+    updateCards(updatedDepartments);
   };
 
   useEffect(() => {
@@ -27,13 +64,14 @@ const DepartmentalPersonalTable = () => {
     if (storedDepartments) {
       const parsedDepartments = JSON.parse(storedDepartments);
       setDepartment(parsedDepartments);
-      setCardCount(parsedDepartments.length);
+      updateCards(parsedDepartments);
     }
-  }, []);
+  }, [searchCard]);
 
-  if (cardCount === 0) {
-    return null;
-  }
+  //   in case of zero cards it will close form
+  //   if (cardCount === 0) {
+  //     return null;
+  //   }
 
   return (
     <>
@@ -69,10 +107,17 @@ const DepartmentalPersonalTable = () => {
             <div className="search flex flex-col items-start p-0 gap-2 w-full h-7">
               <div className="input box-border flex flex-row justify-center items-center py-2.5 px-3.5 gap-2 w-full h-full bg-[#FFFFFF] border border-solid border-[#D0D5DD] rounded-lg self-stretch grow-0">
                 <div className="content flex flex-row items-center p-0 gap-2 w-full h-6">
-                  <Search className="w-4 h-4" />
-                  <p className="w-16 h-6 font-sans not-italic font-normal text-sm leading-6 text-[#667085]">
-                    Search
-                  </p>
+                  <button>
+                    <Search className="w-4 h-4" />
+                  </button>
+
+                  <input
+                    type="text"
+                    value={searchCard}
+                    onChange={(e) => setSearchCard(e.target.value)}
+                    placeholder="search"
+                    className="w-full h-6 outline-none font-sans not-italic font-normal text-sm leading-6 text-[#667085]"
+                  ></input>
                 </div>
               </div>
             </div>
@@ -80,11 +125,11 @@ const DepartmentalPersonalTable = () => {
             <div className="cardContainer box-border flex flex-col items-center p-0 gap-3 w-full h-full overflow-y-scroll no-scrollbar ">
               {/*card and mapping on it*/}
 
-              {department.map((item, index) => {
+              {filteredCards.map((item, index) => {
                 return (
                   <div
                     key={index}
-                    className="card box-border flex flex-row justify-between items-center py-4 pl-6 pr-4 gap-[21px] w-full h-16 bg-[#FFFFFF] border border-solid border-[#EAECF0] shadow-md rounded-lg self-stretch grow-0"
+                    className="card box-border flex flex-row justify-between hover:bg-gray-200 items-center py-4 pl-6 pr-4 gap-[21px] w-full h-16 bg-[#FFFFFF] border border-solid border-[#EAECF0] shadow-md rounded-lg self-stretch grow-0"
                   >
                     {/*department name*/}
                     <div className="departmentName flex flex-row items-center p-0 gap-3 w-[300px] h-6">
@@ -97,13 +142,16 @@ const DepartmentalPersonalTable = () => {
                     {/*modification icons*/}
                     <div className="modification flex flex-row items-start p-0 gap-2 w-[72px] h-8">
                       <button
-                      onClick={handleModalOpen}
-                      className="editIcon flex justify-center text-[#7F56D9] items-center w-8 h-8 bg-[#F4EBFF] rounded ">
+                        onClick={() => {
+                          handleModalOpen(index);
+                        }}
+                        className="editIcon flex justify-center text-[#7F56D9] items-center w-8 h-8 bg-[#F4EBFF] rounded "
+                      >
                         <Edit />
                       </button>
                       <button
                         onClick={() => {
-                          handleDeleteCard(index);
+                          handleDeleteCard(item.id);
                         }}
                         className="editIcon flex justify-center text-red-600 items-center w-8 h-8 bg-[#FEE4E2] rounded "
                       >
@@ -119,10 +167,10 @@ const DepartmentalPersonalTable = () => {
           <div className="addCard justify-center items-center flex w-full h-[40px] pb-1">
             <button
               onClick={handleModalOpen}
-              className="button flex flex-row justify-center items-center gap-1 w-[90%] h-full bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-lg rounded-lg self-stretch"
+              className="button flex flex-row hover:bg-[#7F56D9] justify-center items-center gap-1 w-[90%] h-full bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-lg rounded-lg self-stretch"
             >
               <AddIcon className="w-3 h-4 text-[#344054]" />
-              <p className="w-8 h-6 font-sans not-italic font-medium text-base leading-6 text-[#344054]">
+              <p className="w-8 h-6 font-sans not-italic font-medium  text-base leading-6 text-[#344054]">
                 Ekle
               </p>
             </button>
@@ -130,13 +178,19 @@ const DepartmentalPersonalTable = () => {
         </div>
         {/*buttons frame*/}
         <div className="buttonsFrame flex flex-row items-start p-0 gap-3 w-full h-[10%] ">
-          <button className="button1 box-border flex flex-row justify-center items-center py-3 px-5 gap-2 w-[49%] h-full bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-lg rounded-lg ">
+          <button
+            onClick={navigateToLanguage}
+            className="button1 box-border flex flex-row justify-center items-center py-3 px-5 gap-2 w-[49%] h-full bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-lg rounded-lg "
+          >
             <p className="w-14 h6 font-sans not-italic font-medium text-base leading-6 text-[#344054]">
               Back
             </p>
           </button>
 
-          <button className="button1 box-border flex flex-row justify-center items-center py-3 px-5 gap-2 w-[49%] h-full bg-[#7F56D9] border border-solid border-[#D0D5DD] shadow-lg rounded-lg ">
+          <button
+            onClick={navigateToPersons}
+            className="button1 box-border flex flex-row justify-center items-center py-3 px-5 gap-2 w-[49%] h-full bg-[#7F56D9] border border-solid border-[#D0D5DD] shadow-lg rounded-lg "
+          >
             <p className="w-14 h6 font-sans not-italic font-medium text-base leading-6 text-[#FFFFFF]">
               Forward
             </p>

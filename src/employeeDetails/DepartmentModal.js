@@ -39,39 +39,50 @@ const DepartmentModal = ({
       return department;
     });
 
-    const newDepartment = {
-      id: inputId + 1,
-      value: inputValue,
-    };
-    departments.push(newDepartment);
-    localStorage.setItem("departments", JSON.stringify(departments));
-    localStorage.setItem("departments", JSON.stringify(updateDepartments));
+    if (selectedDepartment) {
+      localStorage.setItem("departments", JSON.stringify(updateDepartments));
+    } else {
+      const newDepartment = {
+        id: inputId + 1,
+        value: inputValue,
+      };
+      departments.push(newDepartment);
+      localStorage.setItem("departments", JSON.stringify(departments));
+    }
 
-    // localStorage.setItem(`id: ${inputId}`, inputValue);
-    setInputValue(inputValue);
-    setInputId(inputId + 1);
+    // const newDepartment = {
+    //   id: inputId + 1,
+    //   value: inputValue,
+    // };
+    // departments.push(newDepartment);
+    // localStorage.setItem("departments", JSON.stringify(departments));
+    // localStorage.setItem("departments", JSON.stringify(updateDepartments));
+
+    // // localStorage.setItem(`id: ${inputId}`, inputValue);
+    // setInputValue(inputValue);
+    // setInputId(inputId + 1);
 
     setIsOpen(false);
   };
 
-  //   useEffect(() => {
-  //     const storeData = localStorage.getItem("departments");
-  //     if (storeData) {
-  //       const parsedData = JSON.parse(storeData);
-  //       setInputId(parsedData.length);
-  //     }
-  //   });
-
   useEffect(() => {
     const storeData = localStorage.getItem("departments");
     if (storeData) {
-      const cards = JSON.parse(storeData);
-      setInputId(cards.length);
+      const parsedData = JSON.parse(storeData);
+      setInputId(parsedData.length);
     }
-    if (selectedDepartment) {
-      setInputValue(selectedDepartment?.value);
-    }
-  }, [selectedDepartment]);
+  });
+
+  //   useEffect(() => {
+  //     const storeData = localStorage.getItem("departments");
+  //     if (storeData) {
+  //       const cards = JSON.parse(storeData);
+  //       setInputId(cards.length);
+  //     }
+  //     if (selectedDepartment) {
+  //       setInputValue(selectedDepartment?.value);
+  //     }
+  //   }, [selectedDepartment]);
 
   return (
     <>

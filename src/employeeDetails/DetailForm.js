@@ -58,7 +58,7 @@ const DetailForm = () => {
               <span className="w-auto h-5 font-sans not-italic font-medium text-sm leading-5 text-[#344054]">
                 Firma Adi
               </span>
-              <div className="box-border flex flex-row items-center py-0 px-3 w-full h-8 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-lg rounded-lg">
+              <div className="box-border flex flex-row items-center py-0 px-3 w-full h-8 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow rounded-lg">
                 <div className="inputContent flex flex-row items-center p-0 w-full h-6">
                   <input
                     type="text"
@@ -73,7 +73,7 @@ const DetailForm = () => {
               <span className="w-auto h-5 font-sans not-italic font-medium text-sm leading-5 text-[#344054]">
                 Firma Adresi
               </span>
-              <div className="box-border flex flex-row items-center py-0 px-3 w-full h-8 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-lg rounded-lg">
+              <div className="box-border flex flex-row items-center py-0 px-3 w-full h-8 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow rounded-lg">
                 <div className="inputContent flex flex-row items-center p-0 w-full h-6">
                   <input
                     type="text"
@@ -88,7 +88,7 @@ const DetailForm = () => {
               <span className="w-auto h-5 font-sans not-italic font-medium text-sm leading-5 text-[#344054]">
                 Firma E-mail
               </span>
-              <div className="box-border flex flex-row items-center py-0 px-3 w-full h-8 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-lg rounded-lg">
+              <div className="box-border flex flex-row items-center py-0 px-3 w-full h-8 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow rounded-lg">
                 <div className="inputContent flex flex-row items-center p-0 w-full h-6">
                   <input
                     required
@@ -104,7 +104,7 @@ const DetailForm = () => {
               <span className="w-auto h-5 font-sans not-italic font-medium text-sm leading-5 text-[#344054]">
                 Firma ilestsim No.
               </span>
-              <div className="box-border flex flex-row items-center py-0 px-3 w-full h-8 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-lg rounded-lg">
+              <div className="box-border flex flex-row items-center py-0 px-3 w-full h-8 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow rounded-lg">
                 <div className="inputContent flex flex-row items-center p-0 w-full h-6">
                   <input
                     type="text"
@@ -119,7 +119,7 @@ const DetailForm = () => {
               <span className="w-auto h-5 font-sans not-italic font-medium text-sm leading-5 text-[#344054]">
                 Mali Yıl Başlangıç ve Bitiş Tarihi
               </span>
-              <div className="box-border flex flex-row items-center py-0 px-3 w-full h-8 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-lg rounded-lg">
+              <div className="box-border flex flex-row items-center py-0 px-3 w-full h-8 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow rounded-lg">
                 <div className="inputContent flex flex-row items-center p-0 w-full h-6">
                   <input
                     type="text"
@@ -139,7 +139,7 @@ const DetailForm = () => {
                 <span className="w-auto h-5 font-sans not-italic font-medium text-sm leading-5 text-[#344054]">
                   Yetkili Adı
                 </span>
-                <div className="box-border flex flex-row items-center py-0 px-3 w-full h-8 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-lg rounded-lg">
+                <div className="box-border flex flex-row items-center py-0 px-3 w-full h-8 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow rounded-lg">
                   <div className="inputContent flex flex-row items-center p-0 w-full h-6">
                     <input
                       type="text"
@@ -155,7 +155,7 @@ const DetailForm = () => {
                 className="w-auto h-5 font-sans not-italic font-medium text-sm leading-5 text-[#344054]">
                   Yetkili E-mail
                 </span>
-                <div className="box-border flex flex-row items-center py-0 px-3 w-full h-8 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-lg rounded-lg">
+                <div className="box-border flex flex-row items-center py-0 px-3 w-full h-8 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow rounded-lg">
                   <div className="inputContent flex flex-row items-center p-0 w-full h-6">
                     <input
                       type="email"
@@ -169,7 +169,7 @@ const DetailForm = () => {
                 <span className="w-auto h-5 font-sans not-italic font-medium text-sm leading-5 text-[#344054]">
                   Yetkili İletişim No.
                 </span>
-                <div className="box-border flex flex-row items-center py-0 px-3 w-full h-8 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-lg rounded-lg">
+                <div className="box-border flex flex-row items-center py-0 px-3 w-full h-8 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow rounded-lg">
                   <div className="inputContent flex flex-row items-center p-0 w-full h-6">
                     <input
                       type="text"
@@ -183,7 +183,7 @@ const DetailForm = () => {
                 <span className="w-auto h-5 font-sans not-italic font-medium text-sm leading-5 text-[#344054]">
                   Vergi Dairesi
                 </span>
-                <div className="box-border flex flex-row items-center py-0 px-3 w-full h-8 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-lg rounded-lg">
+                <div className="box-border flex flex-row items-center py-0 px-3 w-full h-8 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow rounded-lg">
                   <div className="inputContent flex flex-row items-center p-0 w-full h-6">
                     <input
                       type="text"
@@ -197,7 +197,7 @@ const DetailForm = () => {
                 <span className="w-auto h-5 font-sans not-italic font-medium text-sm leading-5 text-[#344054]">
                   Vergi No
                 </span>
-                <div className="box-border flex flex-row items-center py-0 px-3 w-full h-8 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-lg rounded-lg">
+                <div className="box-border flex flex-row items-center py-0 px-3 w-full h-8 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow rounded-lg">
                   <div className="inputContent flex flex-row items-center p-0 w-full h-6">
                     <input
                       type="number"
@@ -214,7 +214,7 @@ const DetailForm = () => {
                 <span className="w-auto h-5 font-sans not-italic font-medium text-sm leading-5 text-[#344054]">
                   Status
                 </span>
-                <div className="box-border flex flex-row items-center py-0 px-3 w-full h-8 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-lg rounded-lg">
+                <div className="box-border flex flex-row items-center py-0 px-3 w-full h-8 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow rounded-lg">
                   <div className="inputContent flex flex-row items-center p-0 w-full h-6">
                     <input
                       type="text"
@@ -228,7 +228,7 @@ const DetailForm = () => {
                 <span className="w-auto h-5 font-sans not-italic font-medium text-sm leading-5 text-[#344054]">
                   Country
                 </span>
-                <div className="box-border flex flex-row items-center py-0 px-3 w-full h-8 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-lg rounded-lg">
+                <div className="box-border flex flex-row items-center py-0 px-3 w-full h-8 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow rounded-lg">
                   <div className="inputContent flex flex-row items-center p-0 w-full z-10 h-6">
                     <select className="w-full outline-none" id="country" name="country">
                       <option className=" text-xs">select country</option>
@@ -514,7 +514,7 @@ const DetailForm = () => {
                 <span className="w-auto h-5 font-sans not-italic font-medium text-sm leading-5 text-[#344054]">
                   Zaman Dilimi
                 </span>
-                <div className="box-border flex flex-row items-center py-0 px-3 w-full h-8 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-lg rounded-lg">
+                <div className="box-border flex flex-row items-center py-0 px-3 w-full h-8 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow rounded-lg">
                   <div className="inputContent flex flex-row items-center p-0 w-full h-6">
                     <input
                       type="text"
@@ -528,7 +528,7 @@ const DetailForm = () => {
                 <span className="w-auto h-5 font-sans not-italic font-medium text-sm leading-5 text-[#344054]">
                   Ekipman Kredisi
                 </span>
-                <div className="box-border flex flex-row items-center py-0 px-3 w-full h-8 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-lg rounded-lg">
+                <div className="box-border flex flex-row items-center py-0 px-3 w-full h-8 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow rounded-lg">
                   <div className="inputContent flex flex-row items-center p-0 w-full h-6">
                     <input
                       type="text"
@@ -546,13 +546,13 @@ const DetailForm = () => {
         <div className="buttons flex flex-row items-start p-0 gap-2 justify-between w-full h-8">
           <button
             onClick={navigateToLanguage}
-            className="former box-border flex flex-row justify-center items-center  w-[50%] h-8 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-lg rounded-md"
+            className="former box-border flex flex-row justify-center items-center  w-[50%] h-8 bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow rounded-md"
           >
             Former
           </button>
           <button
             onClick={navigateToDetailForm}
-            className="former box-border flex flex-row justify-center items-center w-[50%] h-8 bg-[#7F56D9] border border-solid border-[#7F56D9] shadow-lg rounded-md"
+            className="former box-border flex flex-row justify-center items-center w-[50%] h-8 bg-[#7F56D9] border border-solid border-[#7F56D9] shadow rounded-md"
           >
             Next
           </button>

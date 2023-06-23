@@ -1,113 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { ReactComponent as Search } from "../logos/search.svg";
 import { ReactComponent as Edit } from "../logos/edit.svg";
 import { ReactComponent as Delete } from "../logos/delete.svg";
 import { ReactComponent as AddIcon } from "../logos/addIcon.svg";
 import DepartmentModal from "./DepartmentModal";
-import { useNavigate } from "react-router-dom";
 
-const DepartmentalPersonalTable = () => {
-  const [department, setDepartment] = useState([]);
-  const [cardCount, setCardCount] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [searchCard, setSearchCard] = useState("");
-  const [filteredCards, setFilteredCards] = useState([]);
-  const [modalValue, setModalValue] = useState("");
-  const [selectedDepartment, setSelectedDepartment] = useState([]);
-
-  //navigating to the components with respect to clicks
-  const navigate = useNavigate();
-  const navigateToPersons = () => {
-    navigate("/persons");
-  };
-  const navigateToLanguage = () => {
-    navigate("/detail");
-  };
-  console.log("departemnt: ", department)
-  console.log("selected:", selectedDepartment)
-
-  const getData = () => {
-    const storedDepartments = localStorage.getItem("departments");
-    if (storedDepartments) {
-      const parsedDepartments = JSON.parse(storedDepartments);
-      setDepartment(parsedDepartments);
-      updateCards(parsedDepartments);
-    }
-  };
-
-  const handleDeleteCard = (cardId) => {
-    // console.log(cardId, department);
-
-    const updatedDepartments = department.filter((item) => item.id !== cardId);
-    // console.log(updatedDepartments);
-    setDepartment(updatedDepartments);
-    setCardCount(updatedDepartments.length);
-    localStorage.setItem("departments", JSON.stringify(updatedDepartments));
-    updateCards(updatedDepartments);
-    // const updateDepartments = [...department];
-    // updateDepartments.splice(index, 1);
-    // setDepartment(updateDepartments);
-    // setCardCount(updateDepartments.length);
-    // localStorage.setItem("departments", JSON.stringify(updateDepartments));
-  };
-
-  const updateCards = (updatedDepartments) => {
-    const filterCards = updatedDepartments.filter((item) =>
-      item.value.toLowerCase().includes(searchCard.toLowerCase())
-    );
-    // console.log("allCards :", updatedDepartments);
-
-    setDepartment(updatedDepartments);
-    setFilteredCards(filterCards);
-
-    setCardCount(filterCards.length);
-  };
-
-  const handleModalOpen = (index) => {
-    const selectedDept = index !== undefined ? department[index] : null;
-    setSelectedDepartment(selectedDept);
-    setIsModalOpen(!isModalOpen);
-    setModalValue(selectedDept ? selectedDept.value : "");
-    const userInput = document.getElementById("departments")?.value;
-    const storedDepartments = localStorage.getItem("departments");
-    const parsedDepartments = JSON.parse(storedDepartments);
-    const updatedDepartments = [...parsedDepartments];
-
-    if (userInput.trim() === "") {
-      return; // Skip adding empty card
-    }
-
-    if (index !== undefined && updatedDepartments[index]) {
-      //update existing department
-      updatedDepartments[index].value = userInput;
-    } else {
-      //add new department
-      const newDepartment = {
-        id: cardCount + 1,
-        value: userInput,
-      };
-      updatedDepartments.push(newDepartment);
-      setCardCount(cardCount + 1);
-      //   updateCards(updatedDepartments);
-    }
-    localStorage.setItem("departments", JSON.stringify(updatedDepartments));
-    console.log("updatedCards: ", updatedDepartments);
-    // setDepartment(updatedDepartments);
-    updateCards(updatedDepartments);
-  };
-
-  useEffect(() => {
-    getData();
-  }, [searchCard]);
-
-  //   in case of zero cards it will close form
-  //   if (cardCount === 0) {
-  //     return null;
-  //   }
-
+const DepartmentalPersonalTable = ({
+  searchCard,
+  setSearchCard,
+  filteredCards,
+  handleModalOpen,
+  handleDeleteCard,
+  navigateToLanguage,
+  navigateToPersons,
+  isModalOpen,
+  modalValue,
+  setModalValue,
+  selectedDepartment,
+  getData,
+  cardCount,
+}) => {
   return (
-
-   
     <>
       <div className="tableFrame flex flex-col items-end p-0 gap-3 w-[736px] h-[418px] top-[102px] left-[270px] absolute">
         {/*table title and cards frame*/}
@@ -160,7 +73,7 @@ const DepartmentalPersonalTable = () => {
             <div className="cardContainer box-border flex flex-col items-center p-0 gap-3 w-full h-full overflow-y-scroll no-scrollbar ">
               {/*card and mapping on it*/}
 
-              {filteredCards.map((item, index) => {
+              {filteredCards?.map((item, index) => {
                 return (
                   <div
                     key={index}

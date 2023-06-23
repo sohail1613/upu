@@ -11,6 +11,7 @@ const DepartmenForm = () => {
   const handleOpenModal = () => {
     setIsModalOpen(!isModalOpen);
   };
+  
 
   useEffect(() => {
     const storedDepartments = localStorage.getItem("departments");
@@ -24,6 +25,8 @@ const DepartmenForm = () => {
 
   return (
     <>
+
+   
       <div className="mainFrame flex flex-col items-center p-0 gap-6 absolute left-[300px] top-[200px] w-[672px] h-[170px]">
         {/*content*/}
         <div className="content flex flex-col items-center p-0 gap-3 w-full h-[110px]">

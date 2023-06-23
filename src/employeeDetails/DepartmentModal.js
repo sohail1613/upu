@@ -7,6 +7,7 @@ const DepartmentModal = ({
   modalValue,
   setModalValue,
   selectedDepartment,
+  getData,
 }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [inputValue, setInputValue] = useState("");
@@ -61,7 +62,7 @@ const DepartmentModal = ({
     // // localStorage.setItem(`id: ${inputId}`, inputValue);
     // setInputValue(inputValue);
     // setInputId(inputId + 1);
-
+    getData();
     setIsOpen(false);
   };
 
@@ -73,10 +74,10 @@ const DepartmentModal = ({
     }
 
     setInputId(storeData.length);
-    if(selectedDepartment){
-        setInputValue(selectedDepartment.value)
+    if (selectedDepartment) {
+      setInputValue(selectedDepartment.value);
     }
-  },[selectedDepartment]);
+  }, [selectedDepartment]);
 
   //   useEffect(() => {
   //     const storeData = localStorage.getItem("departments");

@@ -23,12 +23,23 @@ const DepartmentalPersonalTable = () => {
   const navigateToLanguage = () => {
     navigate("/detail");
   };
+  console.log("departemnt: ", department)
+  console.log("selected:", selectedDepartment)
+
+  const getData = () => {
+    const storedDepartments = localStorage.getItem("departments");
+    if (storedDepartments) {
+      const parsedDepartments = JSON.parse(storedDepartments);
+      setDepartment(parsedDepartments);
+      updateCards(parsedDepartments);
+    }
+  };
 
   const handleDeleteCard = (cardId) => {
     // console.log(cardId, department);
 
     const updatedDepartments = department.filter((item) => item.id !== cardId);
-    console.log(updatedDepartments);
+    // console.log(updatedDepartments);
     setDepartment(updatedDepartments);
     setCardCount(updatedDepartments.length);
     localStorage.setItem("departments", JSON.stringify(updatedDepartments));
@@ -44,9 +55,11 @@ const DepartmentalPersonalTable = () => {
     const filterCards = updatedDepartments.filter((item) =>
       item.value.toLowerCase().includes(searchCard.toLowerCase())
     );
+    // console.log("allCards :", updatedDepartments);
 
     setDepartment(updatedDepartments);
     setFilteredCards(filterCards);
+
     setCardCount(filterCards.length);
   };
 
@@ -84,12 +97,7 @@ const DepartmentalPersonalTable = () => {
   };
 
   useEffect(() => {
-    const storedDepartments = localStorage.getItem("departments");
-    if (storedDepartments) {
-      const parsedDepartments = JSON.parse(storedDepartments);
-      setDepartment(parsedDepartments);
-      updateCards(parsedDepartments);
-    }
+    getData();
   }, [searchCard]);
 
   //   in case of zero cards it will close form
@@ -98,6 +106,8 @@ const DepartmentalPersonalTable = () => {
   //   }
 
   return (
+
+   
     <>
       <div className="tableFrame flex flex-col items-end p-0 gap-3 w-[736px] h-[418px] top-[102px] left-[270px] absolute">
         {/*table title and cards frame*/}
@@ -228,6 +238,7 @@ const DepartmentalPersonalTable = () => {
           modalValue={modalValue}
           setModalValue={setModalValue}
           selectedDepartment={selectedDepartment}
+          getData={getData}
         />
       )}
     </>

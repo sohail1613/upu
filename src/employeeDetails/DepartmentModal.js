@@ -19,7 +19,7 @@ const DepartmentModal = ({
 
   const handleInputchange = (event) => {
     setInputValue(event.target.value);
-    setModalValue(event.target.value);
+    // setModalValue(event.target.value);
   };
 
   const handleDepartmentalCard = () => {
@@ -32,6 +32,12 @@ const DepartmentModal = ({
     if (storedData) {
       departments = JSON.parse(storedData);
     }
+    const updateDepartments = departments.map((department) => {
+      if (department?.id === selectedDepartment?.id) {
+        return { ...department, value: inputValue };
+      }
+      return department;
+    });
 
     const newDepartment = {
       id: inputId + 1,
@@ -39,6 +45,8 @@ const DepartmentModal = ({
     };
     departments.push(newDepartment);
     localStorage.setItem("departments", JSON.stringify(departments));
+    localStorage.setItem("departments", JSON.stringify(updateDepartments));
+
     // localStorage.setItem(`id: ${inputId}`, inputValue);
     setInputValue(inputValue);
     setInputId(inputId + 1);

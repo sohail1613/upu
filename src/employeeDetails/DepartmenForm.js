@@ -53,7 +53,11 @@ const DepartmenForm = () => {
       </button>
 
       {/*if value is true and has card data, show table component, else show current component*/}
-      {isModalOpen ? (<DepartmentModal />) : hasCardData ? (<DepartmentalPersonalTable />) : null}
+      {isModalOpen ? (
+        <DepartmentModal />
+      ) : hasCardData ? (
+        <DepartmentalPersonalTable />
+      ) : null}
     </>
   );
 };

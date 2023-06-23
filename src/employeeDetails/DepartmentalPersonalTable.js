@@ -62,8 +62,7 @@ const DepartmentalPersonalTable = () => {
 
     if (index !== undefined) {
       //update existing department
-
-    //   updatedDepartments[index].value = userInput;
+      //   updatedDepartments[index].value = userInput;
     } else {
       //add new department
       const newDepartment = {
@@ -72,7 +71,7 @@ const DepartmentalPersonalTable = () => {
       };
       updatedDepartments.push(newDepartment);
       setCardCount(cardCount + 1);
-    //   updateCards(updatedDepartments);
+      //   updateCards(updatedDepartments);
     }
     localStorage.setItem("departments", JSON.stringify(updatedDepartments));
 

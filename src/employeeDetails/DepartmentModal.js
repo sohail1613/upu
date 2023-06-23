@@ -63,7 +63,7 @@ const DepartmentModal = ({
     // setInputValue(inputValue);
     // setInputId(inputId + 1);
     getData();
-    setIsOpen(false);
+    setIsOpen(!isOpen);
   };
 
   useEffect(() => {

@@ -14,16 +14,19 @@ const DepartmenForm = () => {
   const [filteredCards, setFilteredCards] = useState([]);
   const [modalValue, setModalValue] = useState("");
   const [selectedDepartment, setSelectedDepartment] = useState([]);
+
+
   const handleOpenModal = () => {
     setIsModalOpen(!isModalOpen);
   };
 
+  console.log("department:", department);
+    
   useEffect(() => {
     const storedDepartments = localStorage.getItem("departments");
     if (storedDepartments) {
       const parsedDepartments = JSON.parse(storedDepartments);
       if (parsedDepartments.length > 0) {
-        setHasCardData(true);
         setHasCardData(true);
       }
       setDepartment(parsedDepartments);
@@ -42,6 +45,7 @@ const DepartmenForm = () => {
 
   const getData = () => {
     const storedDepartments = localStorage.getItem("departments");
+    
     if (storedDepartments) {
       const parsedDepartments = JSON.parse(storedDepartments);
       setDepartment(parsedDepartments);
@@ -61,11 +65,13 @@ const DepartmenForm = () => {
   const updateCards = (updatedDepartments) => {
     const filterCards = updatedDepartments.filter((item) =>
       item.value.toLowerCase().includes(searchCard.toLowerCase())
-    );
+      );
 
     setDepartment(updatedDepartments);
     setFilteredCards(filterCards);
     setCardCount(filterCards.length);
+   
+
   };
 
   const handleModalOpen = (index) => {
@@ -92,6 +98,7 @@ const DepartmenForm = () => {
         value: userInput,
       };
       updatedDepartments.push(newDepartment);
+      setHasCardData(true);
       setCardCount(cardCount + 1);
       //updateCards(updatedDepartments);
     }
@@ -105,11 +112,12 @@ const DepartmenForm = () => {
     getData();
   }, [searchCard]);
 
-  console.log("cardsVar:", hasCardData);
+  // console.log("cardsVar:", hasCardData);
+
 
   return (
     <>
-      {hasCardData ? (
+      {department.length > 0  ? (
         <DepartmentalPersonalTable
           searchCard={searchCard}
           setSearchCard={setSearchCard}

@@ -71,7 +71,12 @@ const DepartmentModal = ({
       const parsedData = JSON.parse(storeData);
       setInputId(parsedData.length);
     }
-  });
+
+    setInputId(storeData.length);
+    if(selectedDepartment){
+        setInputValue(selectedDepartment.value)
+    }
+  },[selectedDepartment]);
 
   //   useEffect(() => {
   //     const storeData = localStorage.getItem("departments");

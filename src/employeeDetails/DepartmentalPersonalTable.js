@@ -25,7 +25,7 @@ const DepartmentalPersonalTable = () => {
   };
 
   const handleDeleteCard = (cardId) => {
-    console.log(cardId, department);
+    // console.log(cardId, department);
 
     const updatedDepartments = department.filter((item) => item.id !== cardId);
     console.log(updatedDepartments);
@@ -54,15 +54,19 @@ const DepartmentalPersonalTable = () => {
     const selectedDept = index !== undefined ? department[index] : null;
     setSelectedDepartment(selectedDept);
     setIsModalOpen(!isModalOpen);
+    setModalValue(selectedDept ? selectedDept.value : "");
     const userInput = document.getElementById("departments")?.value;
     const storedDepartments = localStorage.getItem("departments");
     const parsedDepartments = JSON.parse(storedDepartments);
     const updatedDepartments = [...parsedDepartments];
-    // updatedDepartments[index].value = userInput;
 
-    if (index !== undefined) {
+    if (userInput.trim() === "") {
+      return; // Skip adding empty card
+    }
+
+    if (index !== undefined && updatedDepartments[index]) {
       //update existing department
-      //   updatedDepartments[index].value = userInput;
+      updatedDepartments[index].value = userInput;
     } else {
       //add new department
       const newDepartment = {
@@ -74,7 +78,8 @@ const DepartmentalPersonalTable = () => {
       //   updateCards(updatedDepartments);
     }
     localStorage.setItem("departments", JSON.stringify(updatedDepartments));
-
+    console.log("updatedCards: ", updatedDepartments);
+    // setDepartment(updatedDepartments);
     updateCards(updatedDepartments);
   };
 
@@ -146,7 +151,6 @@ const DepartmentalPersonalTable = () => {
               {/*card and mapping on it*/}
 
               {filteredCards.map((item, index) => {
-                console.log("filteredcard", item);
                 return (
                   <div
                     key={index}

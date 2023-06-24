@@ -15,13 +15,12 @@ const DepartmenForm = () => {
   const [modalValue, setModalValue] = useState("");
   const [selectedDepartment, setSelectedDepartment] = useState([]);
 
-
   const handleOpenModal = () => {
-    setIsModalOpen(!isModalOpen);
+    setIsModalOpen(true);
+    console.log("open", isModalOpen);
   };
 
-  console.log("department:", department);
-    
+
   useEffect(() => {
     const storedDepartments = localStorage.getItem("departments");
     if (storedDepartments) {
@@ -45,7 +44,7 @@ const DepartmenForm = () => {
 
   const getData = () => {
     const storedDepartments = localStorage.getItem("departments");
-    
+
     if (storedDepartments) {
       const parsedDepartments = JSON.parse(storedDepartments);
       setDepartment(parsedDepartments);
@@ -65,13 +64,11 @@ const DepartmenForm = () => {
   const updateCards = (updatedDepartments) => {
     const filterCards = updatedDepartments.filter((item) =>
       item.value.toLowerCase().includes(searchCard.toLowerCase())
-      );
+    );
 
     setDepartment(updatedDepartments);
     setFilteredCards(filterCards);
     setCardCount(filterCards.length);
-   
-
   };
 
   const handleModalOpen = (index) => {
@@ -112,17 +109,15 @@ const DepartmenForm = () => {
     getData();
   }, [searchCard]);
 
-  // console.log("cardsVar:", hasCardData);
-
-
   return (
     <>
-      {department.length > 0  ? (
+      {department.length > 0 ? (
         <DepartmentalPersonalTable
           searchCard={searchCard}
           setSearchCard={setSearchCard}
           filteredCards={filteredCards}
           handleModalOpen={handleModalOpen}
+          handleOpenModal={handleOpenModal}
           handleDeleteCard={handleDeleteCard}
           navigateToLanguage={navigateToLanguage}
           navigateToPersons={navigateToPersons}
@@ -133,6 +128,7 @@ const DepartmenForm = () => {
           getData={getData}
           cardCount={cardCount}
           setCardCount={setCardCount}
+          setIsModalOpen={setIsModalOpen}
         />
       ) : (
         <>
@@ -165,12 +161,19 @@ const DepartmenForm = () => {
           </button>
 
           {/*if value is true and has card data, show table component, else show current component*/}
-          {isModalOpen && <DepartmentModal getData={getData} />}
           {/*  {hasCardData && <DepartmentalPersonalTable />}  */}
         </>
+      )}
+      {isModalOpen && (
+        <DepartmentModal
+          getData={getData}
+          handleModalOpen={handleModalOpen}
+          handleOpenModal={handleOpenModal}
+        />
       )}
     </>
   );
 };
 
 export default DepartmenForm;
+

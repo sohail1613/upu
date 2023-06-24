@@ -3,7 +3,6 @@ import { ReactComponent as Search } from "../logos/search.svg";
 import { ReactComponent as Edit } from "../logos/edit.svg";
 import { ReactComponent as Delete } from "../logos/delete.svg";
 import { ReactComponent as AddIcon } from "../logos/addIcon.svg";
-import DepartmentModal from "./DepartmentModal";
 
 const DepartmentalPersonalTable = ({
   searchCard,
@@ -13,11 +12,6 @@ const DepartmentalPersonalTable = ({
   handleDeleteCard,
   navigateToLanguage,
   navigateToPersons,
-  isModalOpen,
-  modalValue,
-  setModalValue,
-  selectedDepartment,
-  getData,
   cardCount,
 }) => {
   return (
@@ -91,7 +85,7 @@ const DepartmentalPersonalTable = ({
                     <div className="modification flex flex-row items-start p-0 gap-2 w-[72px] h-8">
                       <button
                         onClick={() => {
-                          handleModalOpen(index);
+                          handleModalOpen(item);
                         }}
                         className="editIcon flex justify-center text-[#7F56D9] items-center w-8 h-8 bg-[#F4EBFF] rounded "
                       >
@@ -145,15 +139,6 @@ const DepartmentalPersonalTable = ({
           </button>
         </div>
       </div>
-      {isModalOpen && (
-        <DepartmentModal
-          closeModal={handleModalOpen}
-          modalValue={modalValue}
-          setModalValue={setModalValue}
-          selectedDepartment={selectedDepartment}
-          getData={getData}
-        />
-      )}
     </>
   );
 };

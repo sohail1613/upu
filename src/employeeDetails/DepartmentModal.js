@@ -8,19 +8,15 @@ const DepartmentModal = ({
   setModalValue,
   selectedDepartment,
   getData,
+  handleModalOpen
 }) => {
-  const [isOpen, setIsOpen] = useState(true);
   const [inputValue, setInputValue] = useState("");
   const [inputId, setInputId] = useState(0);
   const [departmentalCard, setDepartmentalCard] = useState(false);
 
-  const handleForm = () => {
-    setIsOpen(!isOpen);
-  };
-
+  
   const handleInputchange = (event) => {
     setInputValue(event.target.value);
-    // setModalValue(event.target.value);
   };
 
   const handleDepartmentalCard = () => {
@@ -50,20 +46,8 @@ const DepartmentModal = ({
       departments.push(newDepartment);
       localStorage.setItem("departments", JSON.stringify(departments));
     }
-
-    // const newDepartment = {
-    //   id: inputId + 1,
-    //   value: inputValue,
-    // };
-    // departments.push(newDepartment);
-    // localStorage.setItem("departments", JSON.stringify(departments));
-    // localStorage.setItem("departments", JSON.stringify(updateDepartments));
-
-    // // localStorage.setItem(`id: ${inputId}`, inputValue);
-    // setInputValue(inputValue);
-    // setInputId(inputId + 1);
     getData();
-    setIsOpen(!isOpen);
+    handleModalOpen();
   };
 
   useEffect(() => {
@@ -79,21 +63,11 @@ const DepartmentModal = ({
     }
   }, [selectedDepartment]);
 
-  //   useEffect(() => {
-  //     const storeData = localStorage.getItem("departments");
-  //     if (storeData) {
-  //       const cards = JSON.parse(storeData);
-  //       setInputId(cards.length);
-  //     }
-  //     if (selectedDepartment) {
-  //       setInputValue(selectedDepartment?.value);
-  //     }
-  //   }, [selectedDepartment]);
 
   return (
     <>
       {/*if true open modal otherwise close condition*/}
-      {isOpen && (
+      {handleModalOpen && (
         <div className="w-screen h-screen bg-black/40 flex items-center justify-center z-[999999] absolute inset-0">
           <div className="modalFrame box-border flex flex-col items-start py-6  px-8 gap-8 relative w-[801px] h-[274px] bg-[#FFFFFF] border border-solid border-[#EAECF0] shadow-lg  rounded-2xl">
             {/*modal title*/}
@@ -107,7 +81,7 @@ const DepartmentModal = ({
 
                 {/*close icon*/}
                 <button
-                  onClick={handleForm}
+                  onClick={handleModalOpen}
                   className="closeIconFrame flex flex-row justify-center items-center p-2.5 w-11 h-11 rounded-lg"
                 >
                   <Cross />
@@ -140,7 +114,7 @@ const DepartmentModal = ({
             <div className="buttonFrame flex flex-row justify-end items-start p-0 gap-[1px] w-full h-12">
               <div className="buttonHolder flex flex-row justify-end p-0 gap-4 w-[320px] h-full">
                 <button
-                  onClick={handleForm}
+                  onClick={handleModalOpen}
                   className="button1 flex flex-row justify-center items-center py-3 px-  gap-2 w-[152px] h-full bg-[#FFFFFF] border border-solid border-[#D0D5DD] shadow-lg rounded-lg"
                 >
                   <p className="w-[57px] h-6 font-sans hover:text-red-500 not-italic font-medium text-base leading-6 text-[#344054]">

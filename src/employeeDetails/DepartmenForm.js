@@ -14,12 +14,13 @@ const DepartmenForm = () => {
   const [filteredCards, setFilteredCards] = useState([]);
   const [modalValue, setModalValue] = useState("");
   const [selectedDepartment, setSelectedDepartment] = useState([]);
+  
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
-    console.log("open", isModalOpen);
+    setModalValue(department.value);
+    setSelectedDepartment(department);
   };
-
 
   useEffect(() => {
     const storedDepartments = localStorage.getItem("departments");
@@ -72,6 +73,8 @@ const DepartmenForm = () => {
   };
 
   const handleModalOpen = (index) => {
+    console.log("index:", index);
+     
     const selectedDept = index !== undefined ? department[index] : null;
     setSelectedDepartment(selectedDept);
     setIsModalOpen(!isModalOpen);
@@ -85,9 +88,10 @@ const DepartmenForm = () => {
       return; // Skip adding empty card
     }
 
-    if (index !== undefined && updatedDepartments[index]) {
+    if (index !== undefined) {
+    // if (index !== undefined && updatedDepartments[index]) {
       //update existing department
-      updatedDepartments[index].value = userInput;
+      // updatedDepartments[index].value = userInput;
     } else {
       //add new department
       const newDepartment = {
@@ -95,15 +99,16 @@ const DepartmenForm = () => {
         value: userInput,
       };
       updatedDepartments.push(newDepartment);
-      setHasCardData(true);
+      // setHasCardData(true);
       setCardCount(cardCount + 1);
       //updateCards(updatedDepartments);
     }
-    localStorage.setItem("departments", JSON.stringify(updatedDepartments));
-    console.log("updatedCards: ", updatedDepartments);
-    //setDepartment(updatedDepartments);
-    updateCards(updatedDepartments);
+    // localStorage.setItem("departments", JSON.stringify(updatedDepartments));
+    // // console.log("updatedCards: ", updatedDepartments);
+    // // setDepartment(updatedDepartments);
+    // updateCards(updatedDepartments);
   };
+
 
   useEffect(() => {
     getData();
@@ -159,11 +164,10 @@ const DepartmenForm = () => {
           <button>
             <Baca className="logoFrame box-border absolute w-[100px] h-[70px] right-11 bottom-11 bg-[#FFFFFF] backdrop-blur-lg rounded-md " />
           </button>
-
-          {/*if value is true and has card data, show table component, else show current component*/}
-          {/*  {hasCardData && <DepartmentalPersonalTable />}  */}
         </>
       )}
+
+      {/*if value is true and has card data, show table component, else show current component*/}
       {isModalOpen && (
         <DepartmentModal
           getData={getData}
@@ -176,4 +180,3 @@ const DepartmenForm = () => {
 };
 
 export default DepartmenForm;
-

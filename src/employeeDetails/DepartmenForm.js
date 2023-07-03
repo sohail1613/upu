@@ -14,12 +14,11 @@ const DepartmenForm = () => {
   const [filteredCards, setFilteredCards] = useState([]);
   const [modalValue, setModalValue] = useState("");
   const [selectedDepartment, setSelectedDepartment] = useState([]);
-  
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
-    setModalValue(department.value);
-    setSelectedDepartment(department);
+    // setModalValue(department.value);
+    // setSelectedDepartment(department);
   };
 
   useEffect(() => {
@@ -75,41 +74,40 @@ const DepartmenForm = () => {
   const handleModalOpen = (item, index) => {
     console.log("index:", index);
     console.log("items : ", item);
-     
+
     const selectedDept = index !== undefined ? department[index] : null;
     setSelectedDepartment(selectedDept);
     setIsModalOpen(!isModalOpen);
     setModalValue(selectedDept ? selectedDept.value : "");
-    const userInput = document.getElementById("departments")?.value;
-    const storedDepartments = localStorage.getItem("departments");
-    const parsedDepartments = JSON.parse(storedDepartments);
-    const updatedDepartments = [...parsedDepartments || []];
+    // const userInput = document.getElementById("departments")?.value;
+    // const storedDepartments = localStorage.getItem("departments");
+    // const parsedDepartments = JSON.parse(storedDepartments);
+    // const updatedDepartments = [...parsedDepartments || []];
 
-    if (userInput.trim() === "") {
-      return; // Skip adding empty card
-    }
+    // if (userInput.trim() === "") {
+    //   return; // Skip adding empty card
+    // }
 
-    if (index !== undefined) {
-    // if (index !== undefined && updatedDepartments[index]) {
-      //update existing department
-      // updatedDepartments[index].value = userInput;
-    } else {
-      //add new department
-      const newDepartment = {
-        id: cardCount + 1,
-        value: userInput,
-      };
-      updatedDepartments.push(newDepartment);
-      // setHasCardData(true);
-      setCardCount(cardCount + 1);
-      //updateCards(updatedDepartments);
-    }
-    // localStorage.setItem("departments", JSON.stringify(updatedDepartments));
-    // // console.log("updatedCards: ", updatedDepartments);
-    // // setDepartment(updatedDepartments);
-    // updateCards(updatedDepartments);
+    // if (index !== undefined) {
+    // // if (index !== undefined && updatedDepartments[index]) {
+    //   //update existing department
+    //   // updatedDepartments[index].value = userInput;
+    // } else {
+    //   //add new department
+    //   const newDepartment = {
+    //     id: cardCount + 1,
+    //     value: userInput,
+    //   };
+    //   updatedDepartments.push(newDepartment);
+    //   // setHasCardData(true);
+    //   setCardCount(cardCount + 1);
+    //   //updateCards(updatedDepartments);
+    // }
+    // // localStorage.setItem("departments", JSON.stringify(updatedDepartments));
+    // // // console.log("updatedCards: ", updatedDepartments);
+    // // // setDepartment(updatedDepartments);
+    // // updateCards(updatedDepartments);
   };
-
 
   useEffect(() => {
     getData();
@@ -174,6 +172,8 @@ const DepartmenForm = () => {
           getData={getData}
           handleModalOpen={handleModalOpen}
           handleOpenModal={handleOpenModal}
+          selectedDepartment={selectedDepartment}
+          modalValue={modalValue}
         />
       )}
     </>

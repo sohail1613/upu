@@ -3,7 +3,7 @@ import { ReactComponent as Language } from "../logos/language.svg";
 import { ReactComponent as Factory } from "../logos/blueFactory.svg";
 import { ReactComponent as Department } from "../logos/department.svg";
 import { ReactComponent as Persons } from "../logos/groupr.svg";
-import { ReactComponent as InteriorOperation } from "../logos/Vector.svg";
+import { ReactComponent as InteriorOperation } from "../logos/VectorLogo.svg";
 import { ReactComponent as ExternalOperation } from "../logos/external _operations.svg";
 import { ReactComponent as Equipment } from "../logos/valve.svg";
 import { ReactComponent as Shift } from "../logos/calender.svg";
@@ -38,7 +38,7 @@ const Header = ({path}) => {
 
   return (
     <>
-      <div className="headerFrame flex flex-row justify-between items-center py-2 mt-2 px-8 absolute w-full h-[70px] ">
+      <div className="headerFrame flex flex-row justify-between items-center py-2 mt-2 px-8 absolute w-full h-[70px]">
         <div className="header flex flex-row items-center justify-center p-0 gap-2 w-[85%] h-[65px] ml-[7%]">
           {/*multiple button components*/}
           {buttons.map((item, index) => {

@@ -54,10 +54,10 @@ const DepartmentModal = ({
     const storeData = localStorage.getItem("departments");
     if (storeData) {
       const parsedData = JSON.parse(storeData);
-      setInputId(parsedData.length);
+      setInputId(parsedData?.length);
     }
 
-    setInputId(storeData.length);
+    setInputId(storeData?.length);
     if (selectedDepartment) {
       setInputValue(selectedDepartment.value);
     }

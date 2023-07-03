@@ -26,7 +26,7 @@ const DepartmenForm = () => {
     const storedDepartments = localStorage.getItem("departments");
     if (storedDepartments) {
       const parsedDepartments = JSON.parse(storedDepartments);
-      if (parsedDepartments.length > 0) {
+      if (parsedDepartments?.length > 0) {
         setHasCardData(true);
       }
       setDepartment(parsedDepartments);
@@ -72,8 +72,9 @@ const DepartmenForm = () => {
     setCardCount(filterCards.length);
   };
 
-  const handleModalOpen = (index) => {
+  const handleModalOpen = (item, index) => {
     console.log("index:", index);
+    console.log("items : ", item);
      
     const selectedDept = index !== undefined ? department[index] : null;
     setSelectedDepartment(selectedDept);
@@ -82,7 +83,7 @@ const DepartmenForm = () => {
     const userInput = document.getElementById("departments")?.value;
     const storedDepartments = localStorage.getItem("departments");
     const parsedDepartments = JSON.parse(storedDepartments);
-    const updatedDepartments = [...parsedDepartments];
+    const updatedDepartments = [...parsedDepartments || []];
 
     if (userInput.trim() === "") {
       return; // Skip adding empty card
@@ -137,7 +138,7 @@ const DepartmenForm = () => {
         />
       ) : (
         <>
-          <div className="mainFrame flex flex-col items-center p-0 gap-6 absolute left-[300px] top-[200px] w-[672px] h-[170px]">
+          <div className="mainFrame flex flex-col items-center m-[480px] mt-[350px] gap-6 absolute w-[700px] h-[200px]">
             {/*content*/}
             <div className="content flex flex-col items-center p-0 gap-3 w-full h-[110px]">
               <span className="font-sans not-italic font-semibold text-3xl leading-9 text-center text-[#101828] w-auto h-[38px]">

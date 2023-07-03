@@ -65,6 +65,7 @@ const DepartmentalPersonalTable = ({
               </div>
             </div>
           </div>
+          
           {/*main card conatiner*/}
           <div className="cardContainer box-border flex flex-col items-center p-0 gap-3 w-full h-full overflow-y-scroll no-scrollbar ">
             {/*card and mapping on it*/}
